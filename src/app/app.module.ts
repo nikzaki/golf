@@ -16,6 +16,8 @@ import { HighlightModule, HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
 import { SplashScreenModule } from './_metronic/partials/layout/splash-screen/splash-screen.module';
 // #fake-start#
 import { FakeAPIService } from './_fake/fake-api.service';
+import { DynamicFormComponent } from './_shared_components/dynamic-form/dynamic-form.component';
+import { ModalComponent } from './_shared_components/modal/modal.component';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -28,7 +30,7 @@ function appInitializer(authService: AuthService) {
 
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, DynamicFormComponent, ModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

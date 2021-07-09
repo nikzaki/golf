@@ -13,18 +13,6 @@ const routes: Routes = [
           import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
       },
       {
-        path: 'builder',
-        loadChildren: () =>
-          import('./builder/builder.module').then((m) => m.BuilderModule),
-      },
-      {
-        path: 'ecommerce',
-        loadChildren: () =>
-          import('../modules/e-commerce/e-commerce.module').then(
-            (m) => m.ECommerceModule
-          ),
-      },
-      {
         path: 'user-management',
         loadChildren: () =>
           import('../modules/user-management/user-management.module').then(
@@ -36,13 +24,6 @@ const routes: Routes = [
         loadChildren: () =>
           import('../modules/user-profile/user-profile.module').then(
             (m) => m.UserProfileModule
-          ),
-      },
-      {
-        path: 'dummy',
-        loadChildren: () =>
-          import('./dummy/dummy.module').then(
-            (m) => m.DummyModule
           ),
       },
       {
