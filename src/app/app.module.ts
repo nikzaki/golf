@@ -1,7 +1,7 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientJsonpModule, HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { ClipboardModule } from 'ngx-clipboard';
 import { TranslateModule } from '@ngx-translate/core';
@@ -18,6 +18,7 @@ import { SplashScreenModule } from './_metronic/partials/layout/splash-screen/sp
 import { FakeAPIService } from './_fake/fake-api.service';
 import { DynamicFormComponent } from './_shared_components/dynamic-form/dynamic-form.component';
 import { ModalComponent } from './_shared_components/modal/modal.component';
+import { CrudService } from './_services/crud.service';
 // #fake-end#
 
 function appInitializer(authService: AuthService) {
@@ -36,6 +37,7 @@ function appInitializer(authService: AuthService) {
     BrowserAnimationsModule,
     SplashScreenModule,
     TranslateModule.forRoot(),
+    HttpClientJsonpModule,
     HttpClientModule,
     HighlightModule,
     ClipboardModule,
@@ -70,6 +72,7 @@ function appInitializer(authService: AuthService) {
         },
       },
     },
+    CrudService,
   ],
   bootstrap: [AppComponent],
 })

@@ -27,6 +27,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'club',
+        loadChildren: () =>
+          import('../modules/clubs/clubs.module').then(
+            (m) => m.ClubsModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',

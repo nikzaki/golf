@@ -1,14 +1,16 @@
-import { Injectable, OnDestroy } from '@angular/core';
-import { Observable, BehaviorSubject, of, Subscription } from 'rxjs';
-import { map, catchError, switchMap, finalize } from 'rxjs/operators';
-import { UserModel } from '../_models/user.model';
-import { AuthModel } from '../_models/auth.model';
-import { AuthHTTPService } from './auth-http';
-import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
+import { Injectable, OnDestroy } from "@angular/core";
+import { Observable, BehaviorSubject, of, Subscription } from "rxjs";
+import { map, catchError, switchMap, finalize } from "rxjs/operators";
+import { UserModel } from "../_models/user.model";
+import { AuthModel } from "../_models/auth.model";
+import { AuthHTTPService } from "./auth-http";
+import { environment } from "src/environments/environment";
+import { Router } from "@angular/router";
+import { CrudService } from "src/app/_services/crud.service";
+import { RestApiUrls } from "src/app/_models/rest-api-urls";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class AuthService implements OnDestroy {
   // private fields
@@ -21,7 +23,6 @@ export class AuthService implements OnDestroy {
   currentUserSubject: BehaviorSubject<UserModel>;
   isLoadingSubject: BehaviorSubject<boolean>;
 
-
   get currentUserValue(): UserModel {
     return this.currentUserSubject.value;
   }
@@ -32,7 +33,8 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private crudService: CrudService
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserModel>(undefined);
@@ -42,8 +44,32 @@ export class AuthService implements OnDestroy {
     this.unsubscribe.push(subscr);
   }
 
+  login(email: string, password: string, onSuccess: any, onFail: any) {
+    this.isLoadingSubject.next(true);
+    var req = this.crudService.post(
+      RestApiUrls.authenticate.authenticateUrl +
+        "?username=" +
+        email +
+        "&password=" +
+        password,
+      {}
+    );
+    req.subscribe(
+      (data: any) => {
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      },
+      (error: any) => {
+        if (onFail) {
+          onFail(error && error.error);
+        }
+      }
+    );
+  }
+
   // public methods
-  login(email: string, password: string): Observable<UserModel> {
+  loginOld(email: string, password: string): Observable<UserModel> {
     this.isLoadingSubject.next(true);
     return this.authHttpService.login(email, password).pipe(
       map((auth: AuthModel) => {
@@ -52,7 +78,7 @@ export class AuthService implements OnDestroy {
       }),
       switchMap(() => this.getUserByToken()),
       catchError((err) => {
-        console.error('err', err);
+        console.error("err", err);
         return of(undefined);
       }),
       finalize(() => this.isLoadingSubject.next(false))
@@ -61,7 +87,7 @@ export class AuthService implements OnDestroy {
 
   logout() {
     localStorage.removeItem(this.authLocalStorageToken);
-    this.router.navigate(['/auth/login'], {
+    this.router.navigate(["/auth/login"], {
       queryParams: {},
     });
   }
@@ -93,9 +119,9 @@ export class AuthService implements OnDestroy {
       map(() => {
         this.isLoadingSubject.next(false);
       }),
-      switchMap(() => this.login(user.email, user.password)),
+      switchMap(() => this.loginOld(user.email, user.password)),
       catchError((err) => {
-        console.error('err', err);
+        console.error("err", err);
         return of(undefined);
       }),
       finalize(() => this.isLoadingSubject.next(false))
