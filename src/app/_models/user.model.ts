@@ -13,4 +13,5 @@ export class UserModel {
     password?: string;
     emailSettings?: any;
     pic?: any;
+    fullname?: string;
 }

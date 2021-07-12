@@ -32,9 +32,11 @@ export class TopbarComponent implements OnInit, AfterViewInit {
   extrasLanguagesDisplay: boolean;
   extrasUserDisplay: boolean;
   extrasUserLayout: "offcanvas" | "dropdown";
+  user: UserModel;
 
   constructor(private layout: LayoutService, private auth: AuthService) {
     this.user$ = this.auth.currentUserSubject.asObservable();
+    this.user = JSON.parse(localStorage.getItem('user'));
   }
 
   ngOnInit(): void {

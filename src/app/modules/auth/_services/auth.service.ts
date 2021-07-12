@@ -61,6 +61,7 @@ export class AuthService implements OnDestroy {
         this.currentUserSubject = new BehaviorSubject<UserModel>(data.user);
         this.token = data.authToken;
         localStorage.setItem("token", data.authToken);
+        localStorage.setItem("user", JSON.stringify(data.user));
         if (onSuccess) {
           onSuccess(data);
         }
@@ -91,7 +92,8 @@ export class AuthService implements OnDestroy {
   }
 
   logout() {
-    localStorage.removeItem('token');
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.router.navigate(["/auth/login"], {
       queryParams: {},
     });
