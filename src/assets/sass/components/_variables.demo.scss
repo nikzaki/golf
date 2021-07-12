@@ -4,10 +4,112 @@
 // are not accessible in this file but you can override any global variable as shown below:
 //
 
+
+$mygolf2u-primary:                                  #8BC540;
+$mygolf2u-black:                                    #231F20;
+$mygolf2u-dark-1:                                 #2B4728;
+$mygolf2u-dark-2:                                 #409143;
+$mygolf2u-light-1:                                 #9DEC60;
+$mygolf2u-light-2:                                 #CCEC9E;
+
+
+$layout-themes: (
+    dark: $mygolf2u-dark-1,// #2B4728,
+    // #1e1e2d, // Dark theme color
+	light: #FFFFFF,// #CCEC9E,// #ffffff // Light theme color
+) !default;
+
+
 // Theme colors
 // Override primary color variants
 // $primary:       									#6e9d34; // Bootstrap variable
-$primary:       									#5DBC81; // Bootstrap variable
-$primary-hover:    									#5a8426; // Custom variable
-$primary-light:    									#E1F0FF; // Custom variable
+// $primary:       							    	#8dc641;//	#5DBC81; // Bootstrap variable
+// $primary-hover:    								    #5a8426; // Custom variable
+// $primary-light:    									#edf3d2; // Custom variable
+// $primary-inverse:  									#FFFFFF; // Custom variable
+// $primary-active:                                    #8dc641;
+
+
+// Danger colors
+// $danger:        									#F64E60; // Bootstrap variable 
+// $danger-hover:     									#EE2D41; // Custom variable
+// $danger-light:     									#FFE2E5; // Custom variable
+// $danger-inverse:   									#FFFFFF; // Custom variable
+
+
+
+// // Warning colors
+// $warning:       									darken(#dab800, 10%); //#dab800; //#FFD700; // Bootstrap variable
+// $warning-hover:    									#FFDC00; // Custom variable
+// $warning-light:    									#fcee93; // Custom variable 
+// $warning-inverse:  									#FFFFFF; // Custom variable
+
+
+
+// // Inco colors
+// $info:         		 								darken(#d3e18f,10%); //#d3e18f; // Bootstrap variable
+// $info-hover:   		 								#dce7a5; // Custom variable
+// $info-light:   		 								#e9f0c7; // Custom variable
+// $info-inverse: 		 								#FFFFFF; // Custom variable
+
+
+// Success colorsa
+// $success:       									darken(#a9b472,10%);//#a9b472; // Bootstrap variable
+// $success-hover:    									#d3e18f; // Custom variable
+// $success-light:    									lighten(#dce7a5,10%); //#dce7a5; // Custom variable
+// $success-inverse:  									#FFFFFF; // Custom variable
+
+
+
+//? New Set
+// Primary Colors
+$primary:       							    	$mygolf2u-primary;//	#5DBC81; // Bootstrap variable
+$primary-hover:    								    darken($mygolf2u-primary, 50%); // Custom variable
+$primary-light:    								    lighten($mygolf2u-primary, 35%); // Custom variable
 $primary-inverse:  									#FFFFFF; // Custom variable
+$primary-active:                                    $primary-hover;
+
+
+// $primary-light:                                     $mygolf2u-light-2;
+
+
+
+// Secondary colors
+// $secondary:     									$gray-300 !default; // Bootstrap variable
+// $secondary-hover:  									darken($gray-300, 4%) !default; // Custom variable
+// $secondary-light:  									$gray-200 !default; // Custom variable
+// $secondary-inverse:									$dark-75 !default; // Custom variable
+
+
+// Danger colors
+$danger:        									#F64E60; // Bootstrap variable 
+$danger-hover:     									#EE2D41; // Custom variable
+$danger-light:     									#FFE2E5; // Custom variable
+$danger-inverse:   									#FFFFFF; // Custom variable
+
+// Warning colors
+$warning:       									darken(#dab800, 10%); //#dab800; //#FFD700; // Bootstrap variable
+$warning-hover:    									#FFDC00; // Custom variable
+$warning-light:    									#fcee93; // Custom variable 
+$warning-inverse:  									#FFFFFF; // Custom variable
+
+// info colors
+//
+//main - #8A9DD8
+$info:         		 								darken(#8A9DD8,10%); //#d3e18f; // Bootstrap variable
+$info-hover:   		 								darken(#8A9DD8,25%); // Custom variable
+$info-light:   		 								lighten(#8A9DD8,25%); // Custom variable
+$info-inverse: 		 							    invert(#8A9DD8); //	#FFFFFF; // Custom variable
+
+// Success colorsa
+$success:       									$mygolf2u-dark-2;//#a9b472; // Bootstrap variable
+$success-hover:    									lighten($mygolf2u-dark-2,50%); // Custom variable
+$success-light:    									darken($mygolf2u-dark-2,20%); //#dce7a5; // Custom variable
+$success-inverse:  									#FFFFFF; // Custom variable
+
+
+
+
+// $theme-text-colors: (
+//     "success":    lighten($success,20%)
+// );  // Custom variable

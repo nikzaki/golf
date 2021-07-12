@@ -13,6 +13,13 @@ export const locale = {
       FEATURES: 'Features',
       APPS: 'Apps',
       DASHBOARD: 'Dashboard',
+      HOME: 'Home',
+      BOOKINGS: 'Bookings',
+      CLUBCOURSES: 'Courses',
+      TOURNAMENTS: 'Tournaments',
+      FINANCE: 'Finance',
+      HANDICAP: 'Handicap',
+      ADMIN: 'Admin'
     },
     AUTH: {
       GENERAL: {

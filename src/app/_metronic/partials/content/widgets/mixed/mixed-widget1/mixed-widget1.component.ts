@@ -28,7 +28,7 @@ export class MixedWidget1Component implements OnInit {
   }
 
   getChartOptions() {
-    const strokeColor = '#D13647';
+    const strokeColor = '#409143';//'white'; // '#D13647';
     return {
       series: [
         {

@@ -9,12 +9,12 @@ $root-font-size-md:                             	12px; // Root font size for mob
 
 // Layout Theme Colors
 $layout-themes: (
-	dark:  #1e1e2d, // Dark theme color
-	light: #ffffff // Light theme color
+	dark: #2B4728,// #1e1e2d, // Dark theme color
+	light: #FFFFFF,// #CCEC9E,// #ffffff // Light theme color
 ) !default;
 
 // Page Background Color
-$page-bg:	 										#EEF0F8 !default;
+$page-bg: #f5fbec !default;//	 										#EEF0F8 !default;
 
 // Page Paddings
 $page-padding: (
@@ -278,7 +278,7 @@ $header-menu-config: (
 										default: $text-muted,
 										active: $primary,
 										here: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								),
 								line: (
@@ -286,7 +286,7 @@ $header-menu-config: (
 										default: $text-muted,
 										active: $primary,
 										here: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								)
 							),
@@ -297,7 +297,7 @@ $header-menu-config: (
 									default: $dark-75,
 									active: $primary,
 									here: $primary,
-									hover: $primary
+									hover: $primary,
 								)
 							),
 
@@ -307,7 +307,7 @@ $header-menu-config: (
 									default: $text-muted,
 									active: $primary,
 									here: $primary,
-									hover: $primary
+									hover: $primary,
 								)
 							)
 						),
@@ -337,7 +337,7 @@ $header-menu-config: (
 											default: $text-muted,
 											active: $primary,
 											here: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 
@@ -348,7 +348,7 @@ $header-menu-config: (
 												default: $text-muted,
 												active: $primary,
 												here: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 										line: (
@@ -356,7 +356,7 @@ $header-menu-config: (
 												default: $text-muted,
 												active: $primary,
 												here: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										)
 									),
@@ -367,7 +367,7 @@ $header-menu-config: (
 											default: $dark-75,
 											active: $primary,
 											here: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 
@@ -377,7 +377,7 @@ $header-menu-config: (
 											default: $text-muted,
 											active: $primary,
 											here: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									)
 								),
@@ -432,7 +432,7 @@ $header-menu-config: (
 										default: #9096b8,
 										active: $primary,
 										here: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								),
 								line: (
@@ -440,7 +440,7 @@ $header-menu-config: (
 										default: #9096b8,
 										active: $primary,
 										here: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								)
 							),
@@ -451,7 +451,7 @@ $header-menu-config: (
 									default: #9096b8,
 									active: $primary,
 									here: $primary,
-									hover: $primary
+									hover: $primary,
 								)
 							),
 
@@ -461,7 +461,7 @@ $header-menu-config: (
 									default: #6c7293,
 									active: $primary,
 									here: $primary,
-									hover: $primary
+									hover: $primary,
 								)
 							)
 						),
@@ -492,7 +492,7 @@ $header-menu-config: (
 											default: #494b74,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 
@@ -503,7 +503,7 @@ $header-menu-config: (
 												default: #494b74,
 												here: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 										line: (
@@ -511,7 +511,7 @@ $header-menu-config: (
 												default: #494b74,
 												here: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										)
 									),
@@ -532,7 +532,7 @@ $header-menu-config: (
 											default: #494b74,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									)
 								),
@@ -808,7 +808,7 @@ $header-menu-config: (
 										open: $primary,
 										here: $primary,
 										active: $primary,
-										hover: $primary
+										hover: $primary,
 									),
 								),
 								// Bullet
@@ -819,7 +819,7 @@ $header-menu-config: (
 											open: $primary,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 									line: (
@@ -828,7 +828,7 @@ $header-menu-config: (
 											open: $primary,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									)
 								),
@@ -897,7 +897,7 @@ $header-menu-config: (
 												open: $primary,
 												here: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 
@@ -909,7 +909,7 @@ $header-menu-config: (
 													open: $primary,
 													here: $primary,
 													active: $primary,
-													hover: $primary
+													hover: $primary,
 												)
 											),
 											line: (
@@ -918,7 +918,7 @@ $header-menu-config: (
 													open: $primary,
 													here: $primary,
 													active: $primary,
-													hover: $primary
+													hover: $primary,
 												)
 											)
 										),
@@ -1017,7 +1017,7 @@ $header-menu-config: (
 										open: $primary,
 										here: $primary,
 										active: $primary,
-										hover: $primary
+										hover: $primary,
 									),
 								),
 								// Bullet
@@ -1028,7 +1028,7 @@ $header-menu-config: (
 											open: $primary,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 									line: (
@@ -1037,7 +1037,7 @@ $header-menu-config: (
 											open: $primary,
 											here: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									)
 								),
@@ -1048,7 +1048,7 @@ $header-menu-config: (
 										open: $primary,
 										here: $primary,
 										active: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								),
 								// Arrow
@@ -1058,7 +1058,7 @@ $header-menu-config: (
 										open: $primary,
 										here: $primary,
 										active: $primary,
-										hover: $primary
+										hover: $primary,
 									)
 								)
 							),
@@ -1104,7 +1104,7 @@ $header-menu-config: (
 												default: $text-muted,
 												open: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 										// Bullet
@@ -1115,7 +1115,7 @@ $header-menu-config: (
 													open: $primary,
 													here: $primary,
 													active: $primary,
-													hover: $primary
+													hover: $primary,
 												)
 											),
 											line: (
@@ -1124,7 +1124,7 @@ $header-menu-config: (
 													open: $primary,
 													here: $primary,
 													active: $primary,
-													hover: $primary
+													hover: $primary,
 												)
 											)
 										),
@@ -1134,7 +1134,7 @@ $header-menu-config: (
 												default: $dark-75,
 												open: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 
@@ -1144,7 +1144,7 @@ $header-menu-config: (
 												default: $text-muted,
 												open: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										)
 									)
@@ -1654,13 +1654,13 @@ $aside-menu-config: (
 								bg-color: (
 									default: transparent,
 									// open: #1b1b28,
-									open: #83b73d, // updated css
+									open: $primary, // #83b73d, // updated css
 									// here: #1b1b28,
-									here: #83b73d, // updated css
+									here: $primary,// #83b73d, // updated css
 									// active: #1b1b28,
-									active: #83b73d, // updated css
+									active: $primary,// #83b73d, // updated css
 									// hover: #1b1b28
-									hover: #83b73d // updated css
+									hover: $primary,//-hover, // #83b73d // updated css
 								)
 							),
 
@@ -1673,7 +1673,7 @@ $aside-menu-config: (
 									here: #000,
 									// active: $primary,
 									active: #000, // updated css
-									// hover: $primary
+									// hover: $primary,
 									hover: #000, // updated css
 								),
 							),
@@ -1688,7 +1688,7 @@ $aside-menu-config: (
 										here: #000,
 										// active: $primary,
 										active: #000, // updated css
-										// hover: $primary
+										// hover: $primary,
 										hover: #000, // updated css
 									)
 								),
@@ -1701,7 +1701,7 @@ $aside-menu-config: (
 										here: $primary,
 										// active: $primary,
 										active: #000, // updated css
-										// hover: $primary
+										// hover: $primary,
 										hover: #000, // updated css
 									)
 								)
@@ -1763,13 +1763,13 @@ $aside-menu-config: (
 										bg-color: (
 											default: transparent,
 											// open: #1b1b28,
-											open: #83b73d, // updated css
+											open: $primary, // #83b73d, // updated css
 											// here: #1b1b28,
-											here: #83b73d, // updated css
+											here: $primary, // #83b73d, // updated css
 											// active: #1b1b28,
-											active: #83b73d, // updated css
+											active: $primary, // #83b73d, // updated css
 											// hover: #1b1b28
-											hover: #83b73d // updated css
+											hover: $primary, //,-hover, //#83b73d // updated css
 										)
 									),
 									// Icon
@@ -1781,7 +1781,7 @@ $aside-menu-config: (
 											here: $primary,
 											// active: $primary,
 											active:  #000, // updated css,
-											// hover: $primary
+											// hover: $primary,
 											hover:  #000 // updated css
 										)
 									),
@@ -1794,9 +1794,9 @@ $aside-menu-config: (
 												open: $primary,
 												here: $primary,
 												// active: $primary,
-												active: #000, // updated css
-												// hover: $primary
-												hover: #000, // updated css
+												active: white, // updated css
+												// hover: $primary,
+												hover: white, // updated css
 											)
 										),
 										line: (
@@ -1806,7 +1806,7 @@ $aside-menu-config: (
 												here: $primary,
 												// active: $primary,
 												active: #000, // updated css
-												// hover: $primary
+												// hover: $primary,
 												hover: #000, // updated css
 											)
 										)
@@ -1891,7 +1891,7 @@ $aside-menu-config: (
 									default: #7c87a6,
 									open: $primary,
 									active: $primary,
-									hover: $primary
+									hover: $primary,
 								)
 							)
 						)
@@ -1943,7 +1943,7 @@ $aside-menu-config: (
 											default: lighten(#8c8ea4, 10%),
 											open: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 
@@ -1955,7 +1955,7 @@ $aside-menu-config: (
 												open: $primary,
 												here: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										),
 
@@ -1965,7 +1965,7 @@ $aside-menu-config: (
 												open: $primary,
 												here: $primary,
 												active: $primary,
-												hover: $primary
+												hover: $primary,
 											)
 										)
 									),
@@ -1976,7 +1976,7 @@ $aside-menu-config: (
 											default: darken(#868aa8, 10%),
 											open: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									),
 
@@ -1986,7 +1986,7 @@ $aside-menu-config: (
 											default: lighten(#8c8ea4, 10%),
 											open: $primary,
 											active: $primary,
-											hover: $primary
+											hover: $primary,
 										)
 									)
 								)
@@ -2054,7 +2054,7 @@ $aside-menu-config: (
 			                        open: $primary,
 			                        here: $primary,
 			                        active: $primary,
-			                        hover: $primary
+			                        hover: $primary,
 			                    ),
 			                ),
 
@@ -2066,7 +2066,7 @@ $aside-menu-config: (
 			                            open: $primary,
 			                            here: $primary,
 			                            active: $primary,
-			                            hover: $primary
+			                            hover: $primary,
 			                        )
 			                    ),
 
@@ -2076,7 +2076,7 @@ $aside-menu-config: (
 			                            open: $primary,
 			                            here: $primary,
 			                            active: $primary,
-			                            hover: $primary
+			                            hover: $primary,
 			                        )
 			                    )
 			                ),
@@ -2088,7 +2088,7 @@ $aside-menu-config: (
 			                        open: $primary,
 			                        here: $primary,
 			                        active: $primary,
-			                        hover: $primary
+			                        hover: $primary,
 			                    )
 			                ),
 
@@ -2099,7 +2099,7 @@ $aside-menu-config: (
 			                        open: $primary,
 			                        here: $primary,
 			                        active: $primary,
-			                        hover: $primary
+			                        hover: $primary,
 			                    )
 			                )
 			            ),
@@ -2148,7 +2148,7 @@ $aside-menu-config: (
 			                                default: $text-muted,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        ),
 
@@ -2160,7 +2160,7 @@ $aside-menu-config: (
 			                                    open: $primary,
 			                                    here: $primary,
 			                                    active: $primary,
-			                                    hover: $primary
+			                                    hover: $primary,
 			                                )
 			                            ),
 
@@ -2170,7 +2170,7 @@ $aside-menu-config: (
 			                                    open: $primary,
 			                                    here: $primary,
 			                                    active: $primary,
-			                                    hover: $primary
+			                                    hover: $primary,
 			                                )
 			                            )
 			                        ),
@@ -2181,7 +2181,7 @@ $aside-menu-config: (
 			                                default: $dark-75,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        ),
 
@@ -2191,7 +2191,7 @@ $aside-menu-config: (
 			                                default: $text-muted,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        )
 			                    )
@@ -2305,7 +2305,7 @@ $aside-menu-config: (
 			                                default: $text-muted,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        ),
 
@@ -2317,7 +2317,7 @@ $aside-menu-config: (
 			                                    open: $primary,
 			                                    here: $primary,
 			                                    active: $primary,
-			                                    hover: $primary
+			                                    hover: $primary,
 			                                )
 			                            ),
 			                            line: (
@@ -2326,7 +2326,7 @@ $aside-menu-config: (
 			                                    open: $primary,
 			                                    here: $primary,
 			                                    active: $primary,
-			                                    hover: $primary
+			                                    hover: $primary,
 			                                )
 			                            )
 			                        ),
@@ -2337,7 +2337,7 @@ $aside-menu-config: (
 			                                default: $dark-75,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        ),
 
@@ -2347,7 +2347,7 @@ $aside-menu-config: (
 			                                default: $text-muted,
 			                                open: $primary,
 			                                active: $primary,
-			                                hover: $primary
+			                                hover: $primary,
 			                            )
 			                        )
 			                    )
