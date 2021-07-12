@@ -1,20 +1,21 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthService, UserModel } from '../../auth';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, Subscription } from "rxjs";
+import { first } from "rxjs/operators";
+import { AuthService } from "../../auth";
+import { UserModel } from "../../../_models/user.model";
 
 @Component({
-  selector: 'app-personal-information',
-  templateUrl: './personal-information.component.html',
-  styleUrls: ['./personal-information.component.scss']
+  selector: "app-personal-information",
+  templateUrl: "./personal-information.component.html",
+  styleUrls: ["./personal-information.component.scss"],
 })
 export class PersonalInformationComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
   user: UserModel;
   firstUserState: UserModel;
   subscriptions: Subscription[] = [];
-  avatarPic = 'none';
+  avatarPic = "none";
   isLoading$: Observable<boolean>;
 
   constructor(private userService: AuthService, private fb: FormBuilder) {
@@ -22,29 +23,33 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const sb = this.userService.currentUserSubject.asObservable().pipe(
-      first(user => !!user)
-    ).subscribe(user => {
-      this.user = Object.assign({}, user);
-      this.firstUserState = Object.assign({}, user);
-      this.loadForm();
-    });
+    const sb = this.userService.currentUserSubject
+      .asObservable()
+      .pipe(first((user) => !!user))
+      .subscribe((user) => {
+        this.user = Object.assign({}, user);
+        this.firstUserState = Object.assign({}, user);
+        this.loadForm();
+      });
     this.subscriptions.push(sb);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sb => sb.unsubscribe());
+    this.subscriptions.forEach((sb) => sb.unsubscribe());
   }
 
   loadForm() {
     this.formGroup = this.fb.group({
-      pic: [this.user.pic],
-      firstname: [this.user.firstname, Validators.required],
-      lastname: [this.user.lastname, Validators.required],
-      companyName: [this.user.companyName, Validators.required],
-      phone: [this.user.phone, Validators.required],
-      email: [this.user.email, Validators.compose([Validators.required, Validators.email])],
-      website: [this.user.website, Validators.required]
+      // pic: [this.user.pic],
+      // firstname: [this.user.firstname, Validators.required],
+      // lastname: [this.user.lastname, Validators.required],
+      // companyName: [this.user.companyName, Validators.required],
+      // phone: [this.user.phone, Validators.required],
+      // email: [
+      //   this.user.email,
+      //   Validators.compose([Validators.required, Validators.email]),
+      // ],
+      // website: [this.user.website, Validators.required],
     });
   }
 
@@ -72,14 +77,14 @@ export class PersonalInformationComponent implements OnInit, OnDestroy {
 
   getPic() {
     if (!this.user.pic) {
-      return 'none';
+      return "none";
     }
 
     return `url('${this.user.pic}')`;
   }
 
   deletePic() {
-    this.user.pic = '';
+    this.user.pic = "";
   }
 
   // helpers for View

@@ -1,16 +1,16 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
-import { AuthService } from '../_services/auth.service';
-import { Router } from '@angular/router';
-import { ConfirmPasswordValidator } from './confirm-password.validator';
-import { UserModel } from '../_models/user.model';
-import { first } from 'rxjs/operators';
+import { Component, OnInit, OnDestroy } from "@angular/core";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { Subscription, Observable } from "rxjs";
+import { AuthService } from "../_services/auth.service";
+import { Router } from "@angular/router";
+import { ConfirmPasswordValidator } from "./confirm-password.validator";
+import { UserModel } from "../_models/user.model";
+import { first } from "rxjs/operators";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.scss'],
+  selector: "app-registration",
+  templateUrl: "./registration.component.html",
+  styleUrls: ["./registration.component.scss"],
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
   registrationForm: FormGroup;
@@ -27,8 +27,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   ) {
     this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
-      this.router.navigate(['/']);
+    if (localStorage.getItem('token')) {
+      this.router.navigate(["/"]);
     }
   }
 
@@ -45,7 +45,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.registrationForm = this.fb.group(
       {
         fullname: [
-          '',
+          "",
           Validators.compose([
             Validators.required,
             Validators.minLength(3),
@@ -53,7 +53,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           ]),
         ],
         email: [
-          'qwe@qwe.qwe',
+          "qwe@qwe.qwe",
           Validators.compose([
             Validators.required,
             Validators.email,
@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           ]),
         ],
         password: [
-          '',
+          "",
           Validators.compose([
             Validators.required,
             Validators.minLength(3),
@@ -70,7 +70,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
           ]),
         ],
         cPassword: [
-          '',
+          "",
           Validators.compose([
             Validators.required,
             Validators.minLength(3),
@@ -86,24 +86,24 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   }
 
   submit() {
-    this.hasError = false;
-    const result = {};
-    Object.keys(this.f).forEach(key => {
-      result[key] = this.f[key].value;
-    });
-    const newUser = new UserModel();
-    newUser.setUser(result);
-    const registrationSubscr = this.authService
-      .registration(newUser)
-      .pipe(first())
-      .subscribe((user: UserModel) => {
-        if (user) {
-          this.router.navigate(['/']);
-        } else {
-          this.hasError = true;
-        }
-      });
-    this.unsubscribe.push(registrationSubscr);
+    // this.hasError = false;
+    // const result = {};
+    // Object.keys(this.f).forEach(key => {
+    //   result[key] = this.f[key].value;
+    // });
+    // const newUser = new UserModel();
+    // newUser.setUser(result);
+    // const registrationSubscr = this.authService
+    //   .registration(newUser)
+    //   .pipe(first())
+    //   .subscribe((user: UserModel) => {
+    //     if (user) {
+    //       this.router.navigate(['/']);
+    //     } else {
+    //       this.hasError = true;
+    //     }
+    //   });
+    // this.unsubscribe.push(registrationSubscr);
   }
 
   ngOnDestroy() {

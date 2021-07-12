@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthService, UserModel } from '../../auth';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, Subscription } from "rxjs";
+import { first } from "rxjs/operators";
+import { AuthService } from "../../auth";
+import { UserModel } from "../../../_models/user.model";
 
 @Component({
-  selector: 'app-email-settings',
-  templateUrl: './email-settings.component.html',
-  styleUrls: ['./email-settings.component.scss']
+  selector: "app-email-settings",
+  templateUrl: "./email-settings.component.html",
+  styleUrls: ["./email-settings.component.scss"],
 })
 export class EmailSettingsComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
@@ -21,37 +22,64 @@ export class EmailSettingsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const sb = this.userService.currentUserSubject.asObservable().pipe(
-      first(user => !!user)
-    ).subscribe(user => {
-      this.user = Object.assign({}, user);
-      this.firstUserState = Object.assign({}, user);
-      this.loadForm();
-    });
+    const sb = this.userService.currentUserSubject
+      .asObservable()
+      .pipe(first((user) => !!user))
+      .subscribe((user) => {
+        this.user = Object.assign({}, user);
+        this.firstUserState = Object.assign({}, user);
+        this.loadForm();
+      });
     this.subscriptions.push(sb);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sb => sb.unsubscribe());
+    this.subscriptions.forEach((sb) => sb.unsubscribe());
   }
 
   loadForm() {
     this.formGroup = this.fb.group({
       emailNotification: [this.user.emailSettings.emailNotification],
-      sendCopyToPersonalEmail: [this.user.emailSettings.sendCopyToPersonalEmail],
-      youHaveNewNotifications: [this.user.emailSettings.activityRelatesEmail.youHaveNewNotifications],
-      youAreSentADirectMessage: [this.user.emailSettings.activityRelatesEmail.youAreSentADirectMessage],
-      someoneAddsYouAsAsAConnection: [this.user.emailSettings.activityRelatesEmail.someoneAddsYouAsAsAConnection],
+      sendCopyToPersonalEmail: [
+        this.user.emailSettings.sendCopyToPersonalEmail,
+      ],
+      youHaveNewNotifications: [
+        this.user.emailSettings.activityRelatesEmail.youHaveNewNotifications,
+      ],
+      youAreSentADirectMessage: [
+        this.user.emailSettings.activityRelatesEmail.youAreSentADirectMessage,
+      ],
+      someoneAddsYouAsAsAConnection: [
+        this.user.emailSettings.activityRelatesEmail
+          .someoneAddsYouAsAsAConnection,
+      ],
       uponNewOrder: [this.user.emailSettings.activityRelatesEmail.uponNewOrder],
-      newMembershipApproval: [this.user.emailSettings.activityRelatesEmail.newMembershipApproval],
-      memberRegistration: [this.user.emailSettings.activityRelatesEmail.memberRegistration],
-      newsAboutKeenthemesProductsAndFeatureUpdates:
-        [this.user.emailSettings.updatesFromKeenthemes.newsAboutKeenthemesProductsAndFeatureUpdates],
-      tipsOnGettingMoreOutOfKeen: [this.user.emailSettings.updatesFromKeenthemes.tipsOnGettingMoreOutOfKeen],
-      thingsYouMissedSindeYouLastLoggedIntoKeen: [this.user.emailSettings.updatesFromKeenthemes.thingsYouMissedSindeYouLastLoggedIntoKeen],
-      newsAboutMetronicOnPartnerProductsAndOtherServices:
-        [this.user.emailSettings.updatesFromKeenthemes.newsAboutMetronicOnPartnerProductsAndOtherServices],
-      tipsOnMetronicBusinessProducts: [this.user.emailSettings.updatesFromKeenthemes.tipsOnMetronicBusinessProducts]
+      newMembershipApproval: [
+        this.user.emailSettings.activityRelatesEmail.newMembershipApproval,
+      ],
+      memberRegistration: [
+        this.user.emailSettings.activityRelatesEmail.memberRegistration,
+      ],
+      newsAboutKeenthemesProductsAndFeatureUpdates: [
+        this.user.emailSettings.updatesFromKeenthemes
+          .newsAboutKeenthemesProductsAndFeatureUpdates,
+      ],
+      tipsOnGettingMoreOutOfKeen: [
+        this.user.emailSettings.updatesFromKeenthemes
+          .tipsOnGettingMoreOutOfKeen,
+      ],
+      thingsYouMissedSindeYouLastLoggedIntoKeen: [
+        this.user.emailSettings.updatesFromKeenthemes
+          .thingsYouMissedSindeYouLastLoggedIntoKeen,
+      ],
+      newsAboutMetronicOnPartnerProductsAndOtherServices: [
+        this.user.emailSettings.updatesFromKeenthemes
+          .newsAboutMetronicOnPartnerProductsAndOtherServices,
+      ],
+      tipsOnMetronicBusinessProducts: [
+        this.user.emailSettings.updatesFromKeenthemes
+          .tipsOnMetronicBusinessProducts,
+      ],
     });
   }
 
@@ -69,19 +97,24 @@ export class EmailSettingsComponent implements OnInit, OnDestroy {
         activityRelatesEmail: {
           youHaveNewNotifications: formValues.youHaveNewNotifications,
           youAreSentADirectMessage: formValues.youAreSentADirectMessage,
-          someoneAddsYouAsAsAConnection: formValues.someoneAddsYouAsAsAConnection,
+          someoneAddsYouAsAsAConnection:
+            formValues.someoneAddsYouAsAsAConnection,
           uponNewOrder: formValues.uponNewOrder,
           newMembershipApproval: formValues.newMembershipApproval,
-          memberRegistration: formValues.memberRegistration
+          memberRegistration: formValues.memberRegistration,
         },
         updatesFromKeenthemes: {
-          newsAboutKeenthemesProductsAndFeatureUpdates: formValues.newsAboutKeenthemesProductsAndFeatureUpdates,
+          newsAboutKeenthemesProductsAndFeatureUpdates:
+            formValues.newsAboutKeenthemesProductsAndFeatureUpdates,
           tipsOnGettingMoreOutOfKeen: formValues.tipsOnGettingMoreOutOfKeen,
-          thingsYouMissedSindeYouLastLoggedIntoKeen: formValues.thingsYouMissedSindeYouLastLoggedIntoKeen,
-          newsAboutMetronicOnPartnerProductsAndOtherServices: formValues.newsAboutMetronicOnPartnerProductsAndOtherServices,
-          tipsOnMetronicBusinessProducts: formValues.tipsOnMetronicBusinessProducts
-        }
-      }
+          thingsYouMissedSindeYouLastLoggedIntoKeen:
+            formValues.thingsYouMissedSindeYouLastLoggedIntoKeen,
+          newsAboutMetronicOnPartnerProductsAndOtherServices:
+            formValues.newsAboutMetronicOnPartnerProductsAndOtherServices,
+          tipsOnMetronicBusinessProducts:
+            formValues.tipsOnMetronicBusinessProducts,
+        },
+      },
     });
 
     // Do request to your server for user update, we just imitate user update there

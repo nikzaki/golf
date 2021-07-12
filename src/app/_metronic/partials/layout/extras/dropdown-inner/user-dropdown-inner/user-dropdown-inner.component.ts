@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { LayoutService } from '../../../../../core';
-import { UserModel } from '../../../../../../modules/auth/_models/user.model';
+import { UserModel } from '../../../../../../_models/user.model';
 import { AuthService } from '../../../../../../modules/auth/_services/auth.service';
 @Component({
   selector: 'app-user-dropdown-inner',
@@ -23,6 +23,5 @@ export class UserDropdownInnerComponent implements OnInit {
 
   logout() {
     this.auth.logout();
-    document.location.reload();
   }
 }

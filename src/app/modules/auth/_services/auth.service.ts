@@ -1,13 +1,13 @@
 import { Injectable, OnDestroy } from "@angular/core";
 import { Observable, BehaviorSubject, of, Subscription } from "rxjs";
 import { map, catchError, switchMap, finalize } from "rxjs/operators";
-import { UserModel } from "../_models/user.model";
 import { AuthModel } from "../_models/auth.model";
 import { AuthHTTPService } from "./auth-http";
 import { environment } from "src/environments/environment";
 import { Router } from "@angular/router";
 import { CrudService } from "src/app/_services/crud.service";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
+import { UserModel } from "../../../_models/user.model";
 
 @Injectable({
   providedIn: "root",
@@ -22,6 +22,8 @@ export class AuthService implements OnDestroy {
   isLoading$: Observable<boolean>;
   currentUserSubject: BehaviorSubject<UserModel>;
   isLoadingSubject: BehaviorSubject<boolean>;
+
+  token: string;
 
   get currentUserValue(): UserModel {
     return this.currentUserSubject.value;
@@ -56,6 +58,9 @@ export class AuthService implements OnDestroy {
     );
     req.subscribe(
       (data: any) => {
+        this.currentUserSubject = new BehaviorSubject<UserModel>(data.user);
+        this.token = data.authToken;
+        localStorage.setItem("token", data.authToken);
         if (onSuccess) {
           onSuccess(data);
         }
@@ -86,7 +91,7 @@ export class AuthService implements OnDestroy {
   }
 
   logout() {
-    localStorage.removeItem(this.authLocalStorageToken);
+    localStorage.removeItem('token');
     this.router.navigate(["/auth/login"], {
       queryParams: {},
     });
@@ -98,35 +103,35 @@ export class AuthService implements OnDestroy {
       return of(undefined);
     }
 
-    this.isLoadingSubject.next(true);
-    return this.authHttpService.getUserByToken(auth.authToken).pipe(
-      map((user: UserModel) => {
-        if (user) {
-          this.currentUserSubject = new BehaviorSubject<UserModel>(user);
-        } else {
-          this.logout();
-        }
-        return user;
-      }),
-      finalize(() => this.isLoadingSubject.next(false))
-    );
+    // this.isLoadingSubject.next(true);
+    // return this.authHttpService.getUserByToken(auth.authToken).pipe(
+    //   map((user: UserModel) => {
+    //     if (user) {
+    //       this.currentUserSubject = new BehaviorSubject<UserModel>(user);
+    //     } else {
+    //       this.logout();
+    //     }
+    //     return user;
+    //   }),
+    //   finalize(() => this.isLoadingSubject.next(false))
+    // );
   }
 
   // need create new user then login
-  registration(user: UserModel): Observable<any> {
-    this.isLoadingSubject.next(true);
-    return this.authHttpService.createUser(user).pipe(
-      map(() => {
-        this.isLoadingSubject.next(false);
-      }),
-      switchMap(() => this.loginOld(user.email, user.password)),
-      catchError((err) => {
-        console.error("err", err);
-        return of(undefined);
-      }),
-      finalize(() => this.isLoadingSubject.next(false))
-    );
-  }
+  // registration(user: UserModel): Observable<any> {
+  //   this.isLoadingSubject.next(true);
+  //   return this.authHttpService.createUser(user).pipe(
+  //     map(() => {
+  //       this.isLoadingSubject.next(false);
+  //     }),
+  //     switchMap(() => this.loginOld(user.email, user.password)),
+  //     catchError((err) => {
+  //       console.error("err", err);
+  //       return of(undefined);
+  //     }),
+  //     finalize(() => this.isLoadingSubject.next(false))
+  //   );
+  // }
 
   forgotPassword(email: string): Observable<boolean> {
     this.isLoadingSubject.next(true);
