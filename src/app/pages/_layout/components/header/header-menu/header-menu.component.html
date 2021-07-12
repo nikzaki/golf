@@ -1,9 +1,98 @@
 <!-- begin::Header Nav -->
 <ul class="menu-nav" [ngClass]="ulCSSClasses">
   <!-- begin::1 Level -->
-  <li class="menu-item menu-item-rel" routerLinkActive="menu-item-active">
+  <!-- <li class="menu-item menu-item-rel" routerLinkActive="menu-item-active">
     <a class="menu-link" routerLink="/dashboard" routerLinkActive="active">
       <span class="menu-text" translate="MENU.DASHBOARD"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li> -->
+  <li class="menu-item menu-item-rel" routerLinkActive="menu-item-active">
+    <a class="menu-link" routerLink="/dashboard" routerLinkActive="active">
+      <span class="menu-text" translate="MENU.HOME"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <li class="menu-item menu-item-rel" >
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.BOOKINGS"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <li class="menu-item menu-item-rel" >
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.CLUBCOURSES"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+
+  <!-- <li class="menu-item menu-item-rel" >
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text">Courses</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li> -->
+  <!-- <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text">Memberships</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li> -->
+  <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.TOURNAMENTS"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.FINANCE"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <!-- <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text">Payments & Collections</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li> -->
+  <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.HANDICAP"></span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li>
+  <!-- <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text">Business Intelligence</span>
+      <ng-container *ngIf="rootArrowEnabled">
+        <i class="menu-arrow"></i>
+      </ng-container>
+    </a>
+  </li> -->
+  <li class="menu-item menu-item-rel">
+    <a class="menu-link" routerLink="/dashboard">
+      <span class="menu-text" translate="MENU.ADMIN"></span>
       <ng-container *ngIf="rootArrowEnabled">
         <i class="menu-arrow"></i>
       </ng-container>

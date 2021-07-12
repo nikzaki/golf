@@ -85,7 +85,7 @@ $warning-light:    									#FFF4DE !default; // Custom variable
 $warning-inverse:  									$white !default; // Custom variable
 
 // Danger colors
-$danger:        									#F64E60 !default; // Bootstrap variable
+$danger:        									#F64E60 !default; // Bootstrap variable 
 $danger-hover:     									#EE2D41 !default; // Custom variable
 $danger-light:     									#FFE2E5 !default; // Custom variable
 $danger-inverse:   									$white !default; // Custom variable
@@ -378,7 +378,9 @@ $body-color:                						$dark-75 !default;
 // Font, line-height, and color for body text, headings, and more.
 
 // Font family
-$font-family-base:            						Poppins, Helvetica, "sans-serif" !default;
+// $font-family-base:            						Poppins, Helvetica, "sans-serif" !default;
+$font-family-base:            						GothamPro, Montserrat, "sans-serif" !default;
+// $font-family-base:            						Montserrat, Helvetica, "sans-serif" !default;
 
 $font-size-base:              						1rem !default; // Assumes the browser default, typically `13px`
 $font-size-lg:               	 					$font-size-base * 1.08 !default;   // 14.04px

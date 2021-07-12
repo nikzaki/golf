@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Roboto:300,400,500,600,700");
+// @import url("https://cdn.rawgit.com/mfd/f3d96ec7f0e8f034cc22ea73b3797b59/raw/856f1dbb8d807aabceb80b6d4f94b464df461b3e/gotham.css");
+@import "./assets/sass/fonts/gothamPro/gotham.css";
+
 // Global vendors
 @import "~bootstrap/dist/css/bootstrap.css";
 // => Material
@@ -118,6 +121,13 @@
 }
 
 .aside-menu {
-  background-color: #8dc641;
+  background-color: $primary-light; // #8dc641;
+  // .menu-item.menu-item.active {
+  //   .menu-text {
+  //     a {
+  //       color: white;
+  //     }
+  //   }
+  // }
 }
 
