@@ -1668,13 +1668,13 @@ $aside-menu-config: (
 							icon: (
 								font-color:	(
 									// default: #494b74,
-									default: #000, // updated css
+									default: $mygolf2u-black, // updated css
 									open: #000,
 									here: #000,
 									// active: $primary,
-									active: #000, // updated css
+									active: white, // updated css
 									// hover: $primary,
-									hover: #000, // updated css
+									hover: white, // updated css
 								),
 							),
 
@@ -1683,26 +1683,26 @@ $aside-menu-config: (
 								dot: (
 									bg-color: (
 										// default: #5c5e81,
-										default: #000, // updated css
+										default: $mygolf2u-black, // updated css
 										open: #000,
 										here: #000,
 										// active: $primary,
-										active: #000, // updated css
+										active: white, // updated css
 										// hover: $primary,
-										hover: #000, // updated css
+										hover: white, // updated css
 									)
 								),
 
 								line: (
 									bg-color: (
 										// default: #5c5e81,
-										default: #000, // updated css
+										default: $mygolf2u-black, // updated css
 										open: $primary,
 										here: $primary,
 										// active: $primary,
-										active: #000, // updated css
+										active: white, // updated css
 										// hover: $primary,
-										hover: #000, // updated css
+										hover: white, // updated css
 									)
 								)
 							),
@@ -1711,11 +1711,11 @@ $aside-menu-config: (
 							text:	(
 								font-color:	(
 									// default: #a2a3b7,
-									default: #000, // updated css
+									default: $mygolf2u-black, // updated css
 									open: #000,
 									here: #000,
-									active: #000,
-									hover: #000
+									active: white,
+									hover: white
 								)
 							),
 
@@ -1723,11 +1723,11 @@ $aside-menu-config: (
 							arrow:	(
 								font-color:	(
 									// default: #5c5e81,
-									default: #000, // updated css
+									default: $mygolf2u-black, // updated css
 									open: #000,
 									here: #000,
-									active: #000,
-									hover: #000
+									active: white,
+									hover: white
 								)
 							)
 						),
@@ -1776,7 +1776,7 @@ $aside-menu-config: (
 									icon:	(
 										font-color:	(
 											// default: #494b74,
-											default: #000,
+											default: $mygolf2u-black,
 											open: $primary,
 											here: $primary,
 											// active: $primary,
@@ -1790,7 +1790,7 @@ $aside-menu-config: (
 										dot: (
 											bg-color: (
 												// default: #5c5e81,
-												default: #000, // updated css
+												default: $mygolf2u-black, // updated css
 												open: $primary,
 												here: $primary,
 												// active: $primary,
@@ -1805,9 +1805,9 @@ $aside-menu-config: (
 												open: $primary,
 												here: $primary,
 												// active: $primary,
-												active: #000, // updated css
+												active: white, // updated css
 												// hover: $primary,
-												hover: #000, // updated css
+												hover: white, // updated css
 											)
 										)
 									),
@@ -1815,21 +1815,21 @@ $aside-menu-config: (
 									text: (
 										font-color:	(
 											// default: #9899ac,
-											default: #000, // updated css
+											default: $mygolf2u-black, // updated css
 											open: #000,
-											active: #000,
-											hover: #000
+											active: white,
+											hover: white
 										)
 									),
 									// Arrow
 									arrow:	(
 										font-color:	(
 											// default: #5c5e81,
-											default: #000, // updated css
+											default: $mygolf2u-black, // updated css
 											open: #000,
 											here: #000,
-											active: #000,
-											hover: #000
+											active: white,
+											hover: white
 										)
 									)
 								)
