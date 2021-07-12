@@ -1,6 +1,6 @@
-<div class="card card-custom bg-gray-100 card-stretch gutter-b">
+<div class="card card-custom bg-white card-stretch gutter-b">
   <!-- Header -->
-  <div class="card-header border-0 bg-danger py-5">
+  <div class="card-header border-0 bg-primary py-5">
     <h3 class="card-title font-weight-bolder text-white">Sales Stat</h3>
     <div class="card-toolbar">
       <div
@@ -11,7 +11,7 @@
       >
         <a
           ngbDropdownToggle
-          class="btn btn-transparent-white btn-sm font-weight-bolder dropdown-toggle px-5 dropdown-toggle btn btn-transparent"
+          class="btn btn-light-primary btn-sm font-weight-bolder dropdown-toggle px-5 dropdown-toggle btn btn-transparent"
         >
           Export
         </a>
@@ -29,7 +29,7 @@
     <!--begin::Chart-->
     <div
       id="kt_mixed_widget_1_chart"
-      class="card-rounded-bottom bg-danger"
+      class="card-rounded-bottom bg-white"
       [style.height]="'200px'"
     >
       <apx-chart
@@ -59,7 +59,7 @@
             class="svg-icon svg-icon-3x svg-icon-warning d-block my-2"
           ></span>
           <a href="#" class="text-warning font-weight-bold font-size-h6">
-            Weekly Sales
+            Weekly Sales (warning)
           </a>
         </div>
         <div class="col bg-light-primary px-6 py-8 rounded-xl mb-7">
@@ -68,20 +68,44 @@
             class="svg-icon svg-icon-3x svg-icon-primary d-block my-2"
           ></span>
           <a href="#" class="text-primary font-weight-bold font-size-h6 mt-2">
-            New Users
+            New Users (primary)
           </a>
         </div>
       </div>
       <!--end::Row-->
       <!--begin::Row-->
       <div class="row m-0">
-        <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7">
+        <div class="col bg-light-danger px-6 py-8 rounded-xl mr-7 mb-7">
           <span
             [inlineSVG]="'./assets/media/svg/icons/Design/Layers.svg'"
             class="svg-icon svg-icon-3x svg-icon-danger d-block my-2"
           ></span>
           <a href="#" class="text-danger font-weight-bold font-size-h6 mt-2">
-            Item Orders
+            Item Orders (Danger/Error)
+          </a>
+        </div>
+        <div class="col bg-light-success px-6 py-8 rounded-xl mb-7">
+          <span
+            [inlineSVG]="
+              './assets/media/svg/icons/Communication/Urgent-mail.svg'
+            "
+            class="svg-icon svg-icon-3x svg-icon-success d-block my-2"
+          ></span>
+          <a href="#" class="text-success font-weight-bold font-size-h6 mt-2">
+            Bug Reports (success)
+          </a>
+        </div>
+      </div>
+      <!--end::Row-->
+      
+      <div class="row m-0">
+        <div class="col bg-light-info px-6 py-8 rounded-xl mr-7">
+          <span
+            [inlineSVG]="'./assets/media/svg/icons/Design/Layers.svg'"
+            class="svg-icon svg-icon-3x svg-icon-info d-block my-2"
+          ></span>
+          <a href="#" class="text-info font-weight-bold font-size-h6 mt-2">
+            Golf Events (Info)
           </a>
         </div>
         <div class="col bg-light-success px-6 py-8 rounded-xl">
@@ -96,7 +120,6 @@
           </a>
         </div>
       </div>
-      <!--end::Row-->
     </div>
     <!--end::Stats-->
   </div>

@@ -9,11 +9,11 @@
 $header-bg: get($layout-themes, light);
 $header-shadow: 0px 0px 40px 0px rgba(82,63,105, 0.1);
 
-$menu-link-bg-hover: rgba(#4d5995, 0.06);
+$menu-link-bg-hover: $primary; // rgba($primary, 0.06);// rgba(#4d5995, 0.06);
 $menu-link-bg-active: $menu-link-bg-hover;
 $menu-link-color: #6c7293;
-$menu-link-color-hover: $primary;
-$menu-link-color-active: $primary;
+$menu-link-color-hover: white; //$primary;
+$menu-link-color-active: white; // $primary;
 
 $topbar-border-mobile: 1px solid #eff0f6;
 $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
@@ -38,6 +38,9 @@ $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
 						.menu-text {
 							color: $menu-link-color;
 							font-weight: 500;
+							a {
+								color: $menu-link-color;
+							}
 						}
 
 						.menu-arrow {
@@ -45,6 +48,10 @@ $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
 						}
 
 						.menu-icon {
+							color: $menu-link-color;
+						}
+
+						a {
 							color: $menu-link-color;
 						}
 
@@ -58,6 +65,9 @@ $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
 
 							.menu-text {
 								color: $menu-link-color-active;
+								a {
+									color: $menu-link-color-active;
+								}
 							}
 
 							.menu-arrow {
@@ -65,6 +75,10 @@ $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
 							}
 
 							.menu-icon {
+								color: $menu-link-color-active;
+							}
+
+							a {
 								color: $menu-link-color-active;
 							}
 
@@ -79,6 +93,9 @@ $topbar-shadow-mobile: 0px 0px 40px 0px rgba(82,63,105, 0.2);
 
 							.menu-text {
 								color: $menu-link-color-hover;
+								a {
+									color: $menu-link-color-hover;
+								}
 							}
 
 							.menu-hor-arrow {
