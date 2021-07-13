@@ -1,12 +1,8 @@
 import { Component, OnInit, OnDestroy, ChangeDetectorRef } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Subscription, Observable } from "rxjs";
-import { first } from "rxjs/operators";
-import { UserModel } from "../_models/user.model";
 import { AuthService } from "../_services/auth.service";
 import { ActivatedRoute, Router } from "@angular/router";
-import { RestApiUrls } from "src/app/_models/rest-api-urls";
-import { CrudService } from "src/app/_services/crud.service";
 
 @Component({
   selector: "app-login",
@@ -35,11 +31,11 @@ export class LoginComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private authService: AuthService,
     private route: ActivatedRoute,
-    private router: Router,
+    private router: Router
   ) {
     this.isLoading$ = this.authService.isLoading$;
     // redirect to home if already logged in
-    if (this.authService.currentUserValue) {
+    if (localStorage.getItem('token')) {
       this.router.navigate(["/"]);
     }
   }
@@ -94,7 +90,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     );
   }
 
-  onSuccessfulLogin(data){
+  onSuccessfulLogin(data) {
     if (data) {
       this.router.navigate([this.returnUrl]);
     } else {
@@ -102,7 +98,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     }
   }
 
-  onError(err){
+  onError(err) {
     this.hasError = true;
   }
 

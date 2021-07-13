@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthService, UserModel, ConfirmPasswordValidator } from '../../auth';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, Subscription } from "rxjs";
+import { first } from "rxjs/operators";
+import { AuthService, ConfirmPasswordValidator } from "../../auth";
+import { UserModel } from "../../../_models/user.model";
 
 @Component({
-  selector: 'app-change-password',
-  templateUrl: './change-password.component.html',
-  styleUrls: ['./change-password.component.scss']
+  selector: "app-change-password",
+  templateUrl: "./change-password.component.html",
+  styleUrls: ["./change-password.component.scss"],
 })
 export class ChangePasswordComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
@@ -21,28 +22,32 @@ export class ChangePasswordComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const sb = this.userService.currentUserSubject.asObservable().pipe(
-      first(user => !!user)
-    ).subscribe(user => {
-      this.user = Object.assign({}, user);
-      this.firstUserState = Object.assign({}, user);
-      this.loadForm();
-    });
+    const sb = this.userService.currentUserSubject
+      .asObservable()
+      .pipe(first((user) => !!user))
+      .subscribe((user) => {
+        this.user = Object.assign({}, user);
+        this.firstUserState = Object.assign({}, user);
+        this.loadForm();
+      });
     this.subscriptions.push(sb);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sb => sb.unsubscribe());
+    this.subscriptions.forEach((sb) => sb.unsubscribe());
   }
 
   loadForm() {
-    this.formGroup = this.fb.group({
-      currentPassword: [this.user.password, Validators.required],
-      password: ['', Validators.required],
-      cPassword: ['', Validators.required]
-    }, {
-      validator: ConfirmPasswordValidator.MatchPassword
-    });
+    this.formGroup = this.fb.group(
+      {
+        currentPassword: [this.user.password, Validators.required],
+        password: ["", Validators.required],
+        cPassword: ["", Validators.required],
+      },
+      {
+        validator: ConfirmPasswordValidator.MatchPassword,
+      }
+    );
   }
 
   save() {

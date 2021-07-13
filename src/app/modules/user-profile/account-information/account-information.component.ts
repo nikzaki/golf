@@ -1,13 +1,14 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Observable, Subscription } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { AuthService, UserModel } from '../../auth';
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Observable, Subscription } from "rxjs";
+import { first } from "rxjs/operators";
+import { AuthService } from "../../auth";
+import { UserModel } from "../../../_models/user.model";
 
 @Component({
-  selector: 'app-account-information',
-  templateUrl: './account-information.component.html',
-  styleUrls: ['./account-information.component.scss']
+  selector: "app-account-information",
+  templateUrl: "./account-information.component.html",
+  styleUrls: ["./account-information.component.scss"],
 })
 export class AccountInformationComponent implements OnInit, OnDestroy {
   formGroup: FormGroup;
@@ -21,29 +22,33 @@ export class AccountInformationComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    const sb = this.userService.currentUserSubject.asObservable().pipe(
-      first(user => !!user)
-    ).subscribe(user => {
-      this.user = Object.assign({}, user);
-      this.firstUserState = Object.assign({}, user);
-      this.loadForm();
-    });
+    const sb = this.userService.currentUserSubject
+      .asObservable()
+      .pipe(first((user) => !!user))
+      .subscribe((user) => {
+        this.user = Object.assign({}, user);
+        this.firstUserState = Object.assign({}, user);
+        this.loadForm();
+      });
     this.subscriptions.push(sb);
   }
 
   ngOnDestroy() {
-    this.subscriptions.forEach(sb => sb.unsubscribe());
+    this.subscriptions.forEach((sb) => sb.unsubscribe());
   }
 
   loadForm() {
     this.formGroup = this.fb.group({
-      username: [this.user.username, Validators.required],
-      email: [this.user.email, Validators.compose([Validators.required, Validators.email])],
-      language: [this.user.language],
-      timeZone: [this.user.timeZone],
-      communicationEmail: [this.user.communication.email],
-      communicationSMS: [this.user.communication.sms],
-      communicationPhone: [this.user.communication.phone]
+      // username: [this.user.username, Validators.required],
+      // email: [
+      //   this.user.email,
+      //   Validators.compose([Validators.required, Validators.email]),
+      // ],
+      // language: [this.user.language],
+      // timeZone: [this.user.timeZone],
+      // communicationEmail: [this.user.communication.email],
+      // communicationSMS: [this.user.communication.sms],
+      // communicationPhone: [this.user.communication.phone],
     });
   }
 
@@ -52,7 +57,6 @@ export class AccountInformationComponent implements OnInit, OnDestroy {
     if (!this.formGroup.valid) {
       return;
     }
-
 
     const formValues = this.formGroup.value;
     // prepar user
@@ -64,8 +68,8 @@ export class AccountInformationComponent implements OnInit, OnDestroy {
       communication: {
         email: formValues.communicationEmail,
         sms: formValues.communicationSMS,
-        phone: formValues.communicationPhone
-      }
+        phone: formValues.communicationPhone,
+      },
     });
 
     // Do request to your server for user update, we just imitate user update there
@@ -80,7 +84,6 @@ export class AccountInformationComponent implements OnInit, OnDestroy {
     this.user = Object.assign({}, this.firstUserState);
     this.loadForm();
   }
-
 
   // helpers for View
   isControlValid(controlName: string): boolean {
