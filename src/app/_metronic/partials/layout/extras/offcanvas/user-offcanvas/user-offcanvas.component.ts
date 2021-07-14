@@ -22,7 +22,6 @@ export class UserOffcanvasComponent implements OnInit {
     )}`;
     // this.user$ = this.auth.currentUserSubject.asObservable();
     this.user = JSON.parse(localStorage.getItem("user"));
-    console.log('this.user ::  ==>' , this.user);
   }
 
   logout() {

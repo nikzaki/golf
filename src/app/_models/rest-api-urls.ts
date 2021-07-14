@@ -1,6 +1,9 @@
 export const RestApiUrls: any = {
     authenticate:{
-        authenticateUrl : 'login'
+        authenticateUrl : 'api/login'
         // authenticateUrl : 'authenticate'
+    },
+    sponsors:{
+        getList: 'rest/sponsors'
     }
 }

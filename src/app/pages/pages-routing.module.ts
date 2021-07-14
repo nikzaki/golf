@@ -34,6 +34,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'sponsor-management',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',
