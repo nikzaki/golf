@@ -64,6 +64,7 @@ export class AuthService implements OnDestroy {
         localStorage.setItem("user", JSON.stringify(data.user));
         if (onSuccess) {
           onSuccess(data);
+          this.isLoadingSubject.next(false);
         }
       },
       (error: any) => {

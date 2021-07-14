@@ -8,7 +8,7 @@ export const environment = {
   USERDATA_KEY: 'authf649fc9a5f55',
   isMockEnabled: true,
   // apiUrl: 'https://your-domain.com/api'
-  apiUrl: 'http://miglet.mygolf2u.com/api/'
+  apiUrl: 'http://miglet.mygolf2u.com/'
 };
 
 /*
