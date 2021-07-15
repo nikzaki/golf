@@ -175,7 +175,9 @@ export const DynamicAsideMenuConfig = {
     //   page: '/sponsor-management',
     //   svg: './assets/media/svg/icons/Files/File.svg'
     // },
-    { section: 'Settings'},
+    { section: 'Settings',
+      page: '/' 
+    },
     {
       title: 'Layout Builder',
       root: true,
