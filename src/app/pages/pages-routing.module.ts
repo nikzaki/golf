@@ -48,6 +48,34 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'tournament',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
+        path: 'bookings',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
+        path: 'finance',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
+        path: 'handicap',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',

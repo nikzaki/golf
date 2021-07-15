@@ -165,6 +165,7 @@ export const DefaultLayoutConfig = {
           hoverTimeout: 500, // in milliseconds
         },
       },
+      showAll: false, // by default, all menu items are not shown 
     },
   },
 

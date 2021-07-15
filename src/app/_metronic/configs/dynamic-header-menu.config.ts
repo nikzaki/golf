@@ -21,51 +21,50 @@ export const DynamicHeaderMenuConfig = {
       page: '/bookings',
       translate: 'MENU.BOOKINGS',
       mega: true,
-      submenu: [
-        {
-          title: 'Setup',
-          submenu: [{
-            title: 'Settings',
-            page: '/ngbootstrap/accordion'
-          },
-          {
-            title: 'Pricing & Promotions',
-            page: '/ngbootstrap/alert'
-          },
-          {
-            title: 'Tee Time Generation',
-            page: '/ngbootstrap/buttons'
-          },]
-        },{
-          title: 'Maintenance / Ops',
-          submenu: [{
-            title: 'Live Tee Times',
-            page: '/ngbootstrap/accordion'
-          },
-          {
-            title: 'Update Wizard',
-            page: '/ngbootstrap/alert'
-          },
-          {
-            title: 'Booked / Paid Flights',
-            page: '/ngbootstrap/buttons'
-          },]
-        },{
-          title: 'Offer & Deals',
-          submenu: [{
-              title: 'Discounts',
-              page: '/ngbootstrap/accordion'
-            },
-            {
-              title: 'Vouchers',
-              page: '/ngbootstrap/alert'
-            },
-            {
-              title: 'Privilege Cards',
-              page: '/ngbootstrap/buttons'
-            },]
-        }
-      ]
+      // submenu: [
+      //   {
+      //     title: 'Setup',
+      //     submenu: [{
+      //       title: 'Settings',
+      //       page: '/ngbootstrap/accordion'
+      //     },
+      //     {
+      //       title: 'Pricing & Promotions',
+      //       page: '/ngbootstrap/alert'
+      //     },
+      //     {
+      //       title: 'Tee Time Generation',
+      //       page: '/ngbootstrap/buttons'
+      //     },]
+      //   },{
+      //     title: 'Maintenance / Ops',
+      //     submenu: [{
+      //       title: 'Live Tee Times',
+      //       page: '/ngbootstrap/accordion'
+      //     },
+      //     {
+      //       title: 'Update Wizard',
+      //       page: '/ngbootstrap/alert'
+      //     },
+      //     {
+      //       title: 'Booked / Paid Flights',
+      //       page: '/ngbootstrap/buttons'
+      //     },]
+      //   },{
+      //     title: 'Offer & Deals',
+      //     submenu: [{
+      //         title: 'Discounts',
+      //         page: '/ngbootstrap/accordion'
+      //       },
+      //       {
+      //         title: 'Vouchers',
+      //         page: '/ngbootstrap/alert'
+      //       },
+      //       {
+      //         title: 'Privilege Cards',
+      //         page: '/ngbootstrap/buttons'
+      //       },]
+      //   }]
     },
     {
       title: 'Courses',
@@ -74,38 +73,37 @@ export const DynamicHeaderMenuConfig = {
       page: '/courses',
       translate: 'MENU.CLUBCOURSES',
       mega: true,
-      submenu: [{
-        title: 'Club Management',
-        submenu: [{
-          title: 'Club Info / Details',
-          page: '/courses'
-        },{
-          title: 'Courses',
-          page: '/clubDetails'
-        },{
-          title: 'Caddies',
-          page: '/clubCaddies'
-        },{
-          title: 'Buggies',
-          page: '/clubBuggies'
-        }]
-      },{
-        title: 'Players Management',
-        submenu: [{
-          title: 'Members',
-          page: '/clubMembers'
-        },{
-          title: 'Membership Details',
-          page: '/clubMembership'
-        },{
-          title: 'Subscriptions',
-          page: '/clubPlayerSubscriptions'
-        },{
-          title: 'Accounts & Transactions',
-          page: '/clubTransactions'
-        }]
-      }
-      ]
+      // submenu: [{
+      //   title: 'Club Management',
+      //   submenu: [{
+      //     title: 'Club Info / Details',
+      //     page: '/courses'
+      //   },{
+      //     title: 'Courses',
+      //     page: '/clubDetails'
+      //   },{
+      //     title: 'Caddies',
+      //     page: '/clubCaddies'
+      //   },{
+      //     title: 'Buggies',
+      //     page: '/clubBuggies'
+      //   }]
+      // },{
+      //   title: 'Players Management',
+      //   submenu: [{
+      //     title: 'Members',
+      //     page: '/clubMembers'
+      //   },{
+      //     title: 'Membership Details',
+      //     page: '/clubMembership'
+      //   },{
+      //     title: 'Subscriptions',
+      //     page: '/clubPlayerSubscriptions'
+      //   },{
+      //     title: 'Accounts & Transactions',
+      //     page: '/clubTransactions'
+      //   }]
+      // }]
     },
     // {
     //   title: 'Memberships',
@@ -118,37 +116,37 @@ export const DynamicHeaderMenuConfig = {
       title: 'Tournaments',
       root: true,
       alignment: 'left',
-      page: '/tournaments',
+      page: '/tournament',
       translate: 'MENU.TOURNAMENTS',
       mega: true,
-      submenu: [{
-        // title: 'Club Management',
-        submenu: [{
-          title: 'Add New Tournament',
-          page: '/clubDetails'
-        },{
-          title: 'Tournaments List',
-          page: '/clubDetails'
-        },]
-      },{
-        title: 'Tournament Operations',
-        submenu: [{
-          title: 'XX',
-          page: '/clubDetails'
-        },{
-          title: 'Tournaments List',
-          page: '/clubDetails'
-        },]
-      },{
-        title: 'Management',
-        submenu: [{
-          title: 'Team Management',
-          page: '/clubDetails'
-        },{
-          title: 'League Management',
-          page: '/clubDetails'
-        },]
-      }]
+      // submenu: [{
+      //   // title: 'Club Management',
+      //   submenu: [{
+      //     title: 'Add New Tournament',
+      //     page: '/clubDetails'
+      //   },{
+      //     title: 'Tournaments List',
+      //     page: '/clubDetails'
+      //   },]
+      // },{
+      //   title: 'Tournament Operations',
+      //   submenu: [{
+      //     title: 'XX',
+      //     page: '/clubDetails'
+      //   },{
+      //     title: 'Tournaments List',
+      //     page: '/clubDetails'
+      //   },]
+      // },{
+      //   title: 'Management',
+      //   submenu: [{
+      //     title: 'Team Management',
+      //     page: '/clubDetails'
+      //   },{
+      //     title: 'League Management',
+      //     page: '/clubDetails'
+      //   },]
+      // }]
     },
     {
       title: 'Financial',

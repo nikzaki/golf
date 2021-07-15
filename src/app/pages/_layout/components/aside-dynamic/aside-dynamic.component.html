@@ -62,7 +62,8 @@
     <!--end::Header Logo-->
   </ng-container>
   <!--begin::Menu Container-->
-  <ng-container *ngIf="menuConfig && menuConfig.items">
+  <ng-container *ngIf="(menuConfig && menuConfig.items)">
+    <!-- && (isMenuShowAll() || isMenuEntered(item.page)) -->
     <div
       id="kt_aside_menu"
       class="aside-menu"
@@ -75,20 +76,22 @@
       <!-- begin::Menu Nav -->
       <ul class="menu-nav" [ngClass]="ulCSSClasses">
         <ng-container *ngFor="let item of menuConfig.items">
-          <ng-container
-            *ngIf="item.section"
-            [ngTemplateOutlet]="menuItemSectionTemplate"
-            [ngTemplateOutletContext]="{ item: item }"
-          ></ng-container>
-          <ng-container
-            *ngIf="item.separator"
-            [ngTemplateOutlet]="menuItemSeparatorTemplate"
-          ></ng-container>
-          <ng-container
-            *ngIf="item.title"
-            [ngTemplateOutlet]="menu1LevelTemplate"
-            [ngTemplateOutletContext]="{ item: item }"
-          ></ng-container>
+          <ng-container *ngIf="(isMenuShowAll() || isMenuEntered(item.page))">
+            <ng-container
+              *ngIf="item.section"
+              [ngTemplateOutlet]="menuItemSectionTemplate"
+              [ngTemplateOutletContext]="{ item: item }"
+            ></ng-container>
+            <ng-container
+              *ngIf="item.separator"
+              [ngTemplateOutlet]="menuItemSeparatorTemplate"
+            ></ng-container>
+            <ng-container
+              *ngIf="item.title"
+              [ngTemplateOutlet]="menu1LevelTemplate"
+              [ngTemplateOutletContext]="{ item: item }"
+            ></ng-container>
+          </ng-container>
         </ng-container>
       </ul>
       <!-- end::Menu Nav -->
@@ -101,7 +104,7 @@
 <!-- begin::1 Level -->
 <ng-template #menu1LevelTemplate let-item="item">
   <!-- begin::if don't have submenu -->
-  <ng-container *ngIf="!item.submenu">
+  <ng-container *ngIf="!item.submenu && (isMenuShowAll() || isMenuEntered(item.page))">
     <li
       class="menu-item"
       aria-haspopup="true"
@@ -122,7 +125,7 @@
   <!-- end::if don't have submenu -->
 
   <!-- begin::if has submenu -->
-  <ng-container *ngIf="item.submenu">
+  <ng-container *ngIf="item.submenu && (isMenuShowAll() || isMenuEntered(item.page))">
     <li
       class="menu-item menu-item-submenu"
       aria-haspopup="true"
@@ -192,7 +195,7 @@
   <!-- end::if don't have submenu -->
 
   <!-- begin::if has submenu -->
-  <ng-container *ngIf="item.submenu">
+  <ng-container *ngIf="item.submenu && (isMenuShowAll() || isMenuEntered(item.page))">
     <li
       class="menu-item menu-item-submenu"
       aria-haspopup="true"
