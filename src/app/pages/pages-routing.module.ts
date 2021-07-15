@@ -41,6 +41,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'courses',
+        loadChildren: () =>
+          import('../modules/sponsor-management/sponsor-management.module').then(
+            (m) => m.SponsorManagementModule
+          ),
+      },
+      {
         path: '',
         redirectTo: '/dashboard',
         pathMatch: 'full',
@@ -48,6 +55,11 @@ const routes: Routes = [
       {
         path: '**',
         redirectTo: 'error/404',
+      },
+      {
+        path: 'builder',
+        loadChildren: () =>
+          import('./builder/builder.module').then((m) => m.BuilderModule),
       },
     ],
   },

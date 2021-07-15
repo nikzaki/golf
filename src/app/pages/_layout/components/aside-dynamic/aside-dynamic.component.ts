@@ -68,10 +68,17 @@ export class AsideDynamicComponent implements OnInit, OnDestroy {
   }
 
   private getLogo() {
+    // if (this.brandSkin === 'light') {
+    //   return './assets/media/logos/logo-dark.png';
+    // } else {
+    //   return './assets/media/logos/logo-light.png';
+    // }
+    
     if (this.brandSkin === 'light') {
-      return './assets/media/logos/logo-dark.png';
+      // return './assets/media/logos/logo-dark.png';
+      return './assets/media/logos/myGolf2u.svg';
     } else {
-      return './assets/media/logos/logo-light.png';
+      return './assets/media/logos/myGolf2u.svg';
     }
   }
 
