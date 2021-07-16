@@ -10,7 +10,7 @@ export class SponsorsService {
 
   getListData(data: any, onSuccess: any, onFail: any) {
     var req = this.crudService.get(
-      RestApiUrls.sponsors.getList + "?activeOrInactive=B&pageSize=10&pageNo=1"
+      RestApiUrls.sponsors.getList + "?activeOrInactive=" +  data.activeOrInactive +"&pageSize=" + data.pageSize + "&pageNo=" + data.pageNo + "&search=" + data.search
     );
     req.subscribe(
       (data: any) => {
