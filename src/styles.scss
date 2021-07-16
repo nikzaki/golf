@@ -130,4 +130,37 @@
   //   }
   // }
 }
-
+.custom-table {
+  .mat-header-cell {
+    color: #B5B5C3;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+  }
+  mat-row, mat-footer-row {
+    min-height: 60px;
+  }
+  .mat-cell, .mat-footer-cell {
+    color: #3F4254;
+  }
+}
+.custom-checkbox {
+  .mat-checkbox-inner-container {
+    height: 18px;
+    width: 18px;
+    .mat-checkbox-frame {
+      background-color: #EBEDF3;
+      border: 1px solid transparent;
+      border-radius: 0.42rem;
+      width: 18px;
+      height: 18px;
+    }
+    .mat-checkbox-background {
+      border-radius: 0.42rem;
+    }
+  }
+  .mat-checkbox-ripple {
+    display: none;
+  }
+}

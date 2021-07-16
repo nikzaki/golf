@@ -1,11 +1,11 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { SponsorManagementComponent } from "./sponsor-management.component";
+import { ListSponsorsComponent } from './list-sponsors/list-sponsors.component';
 
 const routes: Routes = [
   {
     path: "",
-    component: SponsorManagementComponent,
+    component: ListSponsorsComponent,
   },
 ];
 
