@@ -35,6 +35,10 @@ export class ListSponsorsComponent implements OnInit {
   constructor(private sponsorsService: SponsorsService) {}
 
   ngOnInit(): void {
+    console.log("on init : ")
+  }
+
+  ngAfterContentInit() {
     this.paginatorObject = {
       activeOrInactive: "B",
       pageSize: 10,
@@ -42,6 +46,7 @@ export class ListSponsorsComponent implements OnInit {
       search: "",
     };
     this.getListData(this.paginatorObject);
+    console.log("after init ")
   }
 
   getListData(data: any) {
@@ -58,7 +63,8 @@ export class ListSponsorsComponent implements OnInit {
 
   onSuccessResponse(data) {
     this.sponsorsList = data.items;
-    this.dataSource = new MatTableDataSource(this.sponsorsList);
+    // this.dataSource = new MatTableDataSource(this.sponsorsList);\
+    this.dataSource = new MatTableDataSource(data.items);
     this.length = data.totalItems;
   }
 
@@ -92,6 +98,16 @@ export class ListSponsorsComponent implements OnInit {
       search: "",
     };
     this.getListData(this.paginatorObject);
-    this.masterToggle();
+    // this.masterToggle();
+  }
+
+  onRefreshClick() {
+    this.paginatorObject = {
+      activeOrInactive: "B",
+      pageSize: 10,
+      pageNo: 1,
+      search: "",
+    };
+    this.getListData(this.paginatorObject);
   }
 }

@@ -107,17 +107,17 @@ export class AsideDynamicComponent implements OnInit, OnDestroy {
   }
 
   isMenuEntered(path) {
-    console.log("is menu item entered : path -  ", path)
-    console.log("is menu item entered : current Url -  ", this.currentUrl)
-    console.log("is menu item entered : current Url indexOf-  ", this.currentUrl.indexOf(path) )
+    // console.log("is menu item entered : path -  ", path)
+    // console.log("is menu item entered : current Url -  ", this.currentUrl)
+    // console.log("is menu item entered : current Url indexOf-  ", this.currentUrl.indexOf(path) )
 
     // let _path = path;
-    if(path) console.log("is menu item entered : path split  ", path.split("/",2))
+    // if(path) console.log("is menu item entered : path split  ", path.split("/",2))
     let _path;
     let _currentUrl;
     if(path) _path = path.split("/",2)[1];
     if(this.currentUrl) _currentUrl = this.currentUrl.split("/",2)[1];
-    if(this.currentUrl) console.log("is menu item entered : current Url split  ", this.currentUrl.split(/[?#]/)[0] )
+    // if(this.currentUrl) console.log("is menu item entered : current Url split  ", this.currentUrl.split(/[?#]/)[0] )
     // if(path) _path = path.split(/[?#]/)[0];
     if(path === '/')
       return true
