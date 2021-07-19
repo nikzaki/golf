@@ -14,7 +14,6 @@ export class SponsorsService {
     );
     req.subscribe(
       (data: any) => {
-        console.log("data ::  ==>", data);
         if (onSuccess) {
           onSuccess(data);
         }

@@ -17,11 +17,12 @@ export class ListSponsorsComponent implements OnInit {
     "country",
     "description",
     "createdBy",
+    // "actions"
   ];
   dataSource = new MatTableDataSource(this.sponsorsList);
   selection = new SelectionModel<Element>(true, []);
   // MatPaginator Inputs
-  length;
+  length: number ;
   pageSize = 10;
   pageSizeOptions: number[] = [5, 10, 25, 100];
 
@@ -77,7 +78,6 @@ export class ListSponsorsComponent implements OnInit {
   }
 
   setPageSizeOptions(setPageSizeOptionsInput: string) {
-    console.log("setPageSizeOptionsInput ::  ==>", setPageSizeOptionsInput);
     if (setPageSizeOptionsInput) {
       this.pageSizeOptions = setPageSizeOptionsInput
         .split(",")
@@ -86,13 +86,13 @@ export class ListSponsorsComponent implements OnInit {
   }
 
   handlePageEvent(event: PageEvent) {
-    console.log("event ::  ==>", event);
     this.paginatorObject = {
       activeOrInactive: "B",
       pageSize: event.pageSize,
       pageNo: event.pageIndex + 1,
       search: this.searchInput,
     };
+    this.pageSize = event.pageSize;
     this.getListData(this.paginatorObject);
     this.masterToggle();
   }

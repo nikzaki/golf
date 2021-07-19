@@ -95,6 +95,15 @@
     <!--end::Search Form-->
     <!--begin: Datatable-->
     <div class="example-container custom-table">
+      <mat-paginator *ngIf="pageSize >= 25"
+      (page)="handlePageEvent($event)"
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="pageEvent = $event"
+      showFirstLastButtons
+    >
+    </mat-paginator>
       <mat-table [dataSource]="dataSource">
         <!-- Checkbox -->
         <ng-container matColumnDef="select">
