@@ -5,6 +5,7 @@ import { SponsorManagementRoutingModule } from './sponsor-management-routing.mod
 import { MetrialModule } from '../metrial/metrial.module';
 import { CRUDTableModule } from 'src/app/_metronic/shared/crud-table';
 import { ListSponsorsComponent } from './list-sponsors/list-sponsors.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { ListSponsorsComponent } from './list-sponsors/list-sponsors.component';
     CommonModule,
     SponsorManagementRoutingModule,
     MetrialModule,
-    CRUDTableModule
+    CRUDTableModule,
+    FormsModule
   ]
 })
 export class SponsorManagementModule { }
