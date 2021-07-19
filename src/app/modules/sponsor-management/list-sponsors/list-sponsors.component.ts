@@ -1,26 +1,23 @@
-import { SelectionModel } from '@angular/cdk/collections';
-import { Component, OnInit } from '@angular/core';
-import { PageEvent } from '@angular/material/paginator';
-import { MatTableDataSource } from '@angular/material/table';
-import { PaginatorModel } from 'src/app/_models/paginator.model';
-import { SponsorsService } from '../_services/sponsors.service';
-
-export interface SponsorElement {
-  name: string;
-  country: any;
-  description: string;
-  createdBy: string;
-}
-
-
+import { SelectionModel } from "@angular/cdk/collections";
+import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { PageEvent } from "@angular/material/paginator";
+import { MatTableDataSource } from "@angular/material/table";
+import { PaginatorModel } from "src/app/_models/paginator.model";
+import { SponsorsService } from "../_services/sponsors.service";
 @Component({
-  selector: 'app-list-sponsors',
-  templateUrl: './list-sponsors.component.html',
-  styleUrls: ['./list-sponsors.component.scss']
+  selector: "app-list-sponsors",
+  templateUrl: "./list-sponsors.component.html",
+  styleUrls: ["./list-sponsors.component.scss"],
 })
 export class ListSponsorsComponent implements OnInit {
   sponsorsList = [];
-  displayedColumns : string[] = ["select", "name", "country", "description", "createdBy"];
+  displayedColumns: string[] = [
+    "select",
+    "name",
+    "country",
+    "description",
+    "createdBy",
+  ];
   dataSource = new MatTableDataSource(this.sponsorsList);
   selection = new SelectionModel<Element>(true, []);
   // MatPaginator Inputs
@@ -31,15 +28,19 @@ export class ListSponsorsComponent implements OnInit {
   // MatPaginator Output
   pageEvent: PageEvent;
   paginatorObject: PaginatorModel;
+  searchInput: string = "";
 
-  constructor(private sponsorsService: SponsorsService) {}
+  constructor(
+    private sponsorsService: SponsorsService,
+    private changeDetectorRefs: ChangeDetectorRef
+  ) {}
 
   ngOnInit(): void {
     this.paginatorObject = {
       activeOrInactive: "B",
       pageSize: 10,
       pageNo: 1,
-      search: "",
+      search: this.searchInput,
     };
     this.getListData(this.paginatorObject);
   }
@@ -59,6 +60,7 @@ export class ListSponsorsComponent implements OnInit {
   onSuccessResponse(data) {
     this.sponsorsList = data.items;
     this.dataSource = new MatTableDataSource(this.sponsorsList);
+    this.changeDetectorRefs.detectChanges();
     this.length = data.totalItems;
   }
 
@@ -89,9 +91,19 @@ export class ListSponsorsComponent implements OnInit {
       activeOrInactive: "B",
       pageSize: event.pageSize,
       pageNo: event.pageIndex + 1,
-      search: "",
+      search: this.searchInput,
     };
     this.getListData(this.paginatorObject);
     this.masterToggle();
+  }
+
+  filterRecord() {
+    this.paginatorObject = {
+      activeOrInactive: "B",
+      pageSize: 10,
+      pageNo: 1,
+      search: this.searchInput,
+    };
+    this.getListData(this.paginatorObject);
   }
 }
