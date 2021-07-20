@@ -1,4 +1,5 @@
 import { Injectable } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { CrudService } from "src/app/_services/crud.service";
 
@@ -10,7 +11,15 @@ export class SponsorsService {
 
   getListData(data: any, onSuccess: any, onFail: any) {
     var req = this.crudService.get(
-      RestApiUrls.sponsors.getList + "?activeOrInactive=" +  data.activeOrInactive +"&pageSize=" + data.pageSize + "&pageNo=" + data.pageNo + "&search=" + data.search
+      RestApiUrls.sponsors.getList +
+        "?activeOrInactive=" +
+        data.activeOrInactive +
+        "&pageSize=" +
+        data.pageSize +
+        "&pageNo=" +
+        data.pageNo +
+        "&search=" +
+        data.search
     );
     req.subscribe(
       (data: any) => {
