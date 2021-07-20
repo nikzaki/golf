@@ -5,7 +5,8 @@ import { SponsorManagementRoutingModule } from './sponsor-management-routing.mod
 import { MetrialModule } from '../metrial/metrial.module';
 import { CRUDTableModule } from 'src/app/_metronic/shared/crud-table';
 import { ListSponsorsComponent } from './list-sponsors/list-sponsors.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { InlineSVGModule } from 'ng-inline-svg';
 
 
 @NgModule({
@@ -15,7 +16,9 @@ import { FormsModule } from '@angular/forms';
     SponsorManagementRoutingModule,
     MetrialModule,
     CRUDTableModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    InlineSVGModule
   ]
 })
 export class SponsorManagementModule { }
