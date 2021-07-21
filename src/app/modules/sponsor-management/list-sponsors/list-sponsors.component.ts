@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import {
@@ -17,7 +18,10 @@ import {
   PaginatorState,
   SortState,
 } from "src/app/_metronic/shared/crud-table";
+import { DeleteModalModel } from "src/app/_models/delete-modal-model";
 import { PaginatorModel } from "src/app/_models/paginator.model";
+import { RestApiUrls } from "src/app/_models/rest-api-urls";
+import { DeleteModalComponent } from "src/app/_shared_components/delete-modal/delete-modal.component";
 import { CustomersService } from "../_services/customers.service";
 import { SponsorsService } from "../_services/sponsors.service";
 @Component({
@@ -57,6 +61,7 @@ export class ListSponsorsComponent
   constructor(
     private sponsorsService: SponsorsService,
     private fb: FormBuilder,
+    private modalService: NgbModal,
     public customerService: CustomersService
   ) {}
 
@@ -99,6 +104,9 @@ export class ListSponsorsComponent
   onSuccessResponse(data) {
     this._items$.next(data.items);
     this.paginator.total = data.totalItems;
+    this.grouping.itemIds = data.items.map((ele) => {
+      return ele.id;
+    });
   }
 
   // filtration
@@ -179,6 +187,7 @@ export class ListSponsorsComponent
     };
     this.pageSize = paginator.pageSize;
     this.getListData(this.paginatorObject);
+    this.grouping.selectedRowIds = new Set<number>();
   }
 
   // form actions
@@ -188,7 +197,29 @@ export class ListSponsorsComponent
 
   edit(id: number) {}
 
-  delete(id: number) {}
+  delete(id: number) {
+    const modalRef = this.modalService.open(DeleteModalComponent);
+    let data: DeleteModalModel = {
+      title: "Delete Sponsor",
+      content: "Sponsor",
+      id: id,
+      apiAction: RestApiUrls.sponsors.deleteSponsor,
+    };
+    modalRef.componentInstance.data = data;
+    modalRef.result.then(
+      () => {
+        this.paginatorObject = {
+          activeOrInactive: "B",
+          pageSize: 10,
+          pageNo: 1,
+          search: "",
+        };
+        this.getListData(this.paginatorObject);
+        this.searchGroup.reset();
+      },
+      () => {}
+    );
+  }
 
   deleteSelected() {}
 
