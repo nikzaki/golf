@@ -8,5 +8,6 @@
 # dependencies
 /node_modules
 /node_modules*
-
+/documentation
+/dist *
 demo-css.txt
