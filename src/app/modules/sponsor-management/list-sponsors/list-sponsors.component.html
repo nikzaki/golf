@@ -60,8 +60,8 @@
     </div>
     <!-- end: Filtration form -->
 
-    <!-- begin: Grouping -->
-    <ng-container *ngIf="grouping.getSelectedRowsCount()">
+    <!-- begin: Grouping - checkbox -->
+    <!-- <ng-container *ngIf="grouping.getSelectedRowsCount()">
       <div class="form">
         <div
           class="row align-items-center form-group-actions margin-top-20 margin-bottom-20"
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-    </ng-container>
+    </ng-container> -->
     <!-- end: Grouping -->
 
     <app-paginator
@@ -106,7 +106,11 @@
         class="table table-head-custom table-vertical-center overflow-hidden"
       >
         <thead>
-          <th class="selection-cell-header" data-row-selection="true">
+          <th
+            width="5%"
+            class="selection-cell-header"
+            data-row-selection="true"
+          >
             <label class="checkbox checkbox-single"
               ><input
                 type="checkbox"
@@ -117,15 +121,15 @@
           <!-- <th>
             ID
           </th> -->
-          <th>Name of Sponsor</th>
-          <th>Country</th>
-          <th>Description</th>
-          <th>Created By</th>
-          <th>ACTIONS</th>
+          <th width="15%">Name of Sponsor</th>
+          <th width="15%">Country</th>
+          <th width="40%">Description</th>
+          <th width="10%">Created By</th>
+          <th width="15%">ACTIONS</th>
         </thead>
         <tbody>
           <tr *ngFor="let data of _items$ | async">
-            <td class="selection-cell">
+            <td width="5%" class="selection-cell">
               <label class="checkbox checkbox-single"
                 ><input
                   type="checkbox"
@@ -136,11 +140,11 @@
               </label>
             </td>
             <!-- <td>{{ data.id }}</td> -->
-            <td>{{ data.name }}</td>
-            <td>{{ data.country?.name }}</td>
-            <td>{{ data.description }}</td>
-            <td>{{ data.createdBy }}</td>
-            <td>
+            <td width="15%">{{ data.name }}</td>
+            <td width="15%">{{ data.country?.name }}</td>
+            <td width="40%">{{ data.description }}</td>
+            <td width="10%">{{ data.createdBy }}</td>
+            <td width="15%">
               <a
                 title="Edit customer"
                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
