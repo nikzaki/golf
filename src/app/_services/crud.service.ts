@@ -15,4 +15,8 @@ export class CrudService {
   get(url: string) {
     return this.http.get<any>(environment.apiUrl + url);
   }
+
+  delete(url: string, id: number) {
+    return this.http.delete<any>(environment.apiUrl + url + id);
+  }
 }

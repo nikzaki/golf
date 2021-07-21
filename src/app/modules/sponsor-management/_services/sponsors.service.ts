@@ -19,7 +19,7 @@ export class SponsorsService {
         "&pageNo=" +
         data.pageNo +
         "&search=" +
-        data.search
+        (data.search ? data.search : "")
     );
     req.subscribe(
       (data: any) => {
@@ -28,7 +28,22 @@ export class SponsorsService {
         }
       },
       (error: any) => {
-        console.log("error ::  ==>", error);
+        if (onFail) {
+          onFail(error && error.error);
+        }
+      }
+    );
+  }
+
+  delete(data: any, onSuccess: any, onFail: any) {
+    var req = this.crudService.delete(data.apiMethod, data.id);
+    req.subscribe(
+      (data: any) => {
+        if (onSuccess) {
+          onSuccess(data);
+        }
+      },
+      (error: any) => {
         if (onFail) {
           onFail(error && error.error);
         }
