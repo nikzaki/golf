@@ -167,6 +167,120 @@ export const DynamicAsideMenuConfig = {
         }
       ]
     },
+    { section: 'Financials',
+      page: '/finance'},
+    { title: 'Settings',
+    root: true,
+    bullet: 'dot',
+    page: '/finance',
+    icon: 'flaticon2-browser-2',
+    svg: './assets/media/svg/icons/Design/Cap-2.svg',
+    submenu: [{
+        title: 'Settings',
+        bullet: 'dot',
+        page: '/finance/finance-settings', //'/tournament/sponsor-management',
+        },{
+          title: 'Mapping',
+          bullet: 'dot',
+          page: '/finance/transaction/mapping',
+        },{
+          title: 'Export',
+          bullet: 'dot',
+          page: '/finance/transaction/export',
+        }
+      ]
+    },
+    { title: 'Transactions',
+    root: true,
+    bullet: 'dot',
+    page: '/finance',
+    icon: 'flaticon2-browser-2',
+    svg: './assets/media/svg/icons/Design/Cap-2.svg',
+    submenu: [{
+        title: 'Flights',
+        bullet: 'dot',
+        page: '/finance/transaction/flight-transactions', //'/tournament/sponsor-management',
+        },{
+          title: 'Commissions',
+          bullet: 'dot',
+          page: '/finance/transaction/commissions',
+        },{
+          title: 'Payments',
+          bullet: 'dot',
+          page: '/finance/transaction/payments',
+        },{
+          title: 'Collections',
+          bullet: 'dot',
+          page: '/finance/transaction/collections',
+        },{
+          title: 'Recon',
+          bullet: 'dot',
+          page: '/finance/transaction/reconciliation',
+        }
+      ]
+    },
+    { section: 'Handicaps',
+      page: '/handicaps'},
+    { title: 'Handicaps',
+    root: true,
+    bullet: 'dot',
+    page: '/handicaps',
+    icon: 'flaticon2-browser-2',
+    svg: './assets/media/svg/icons/Design/Cap-2.svg',
+    submenu: [{
+        title: 'Settings',
+        bullet: 'dot',
+        page: '/handicaps/handicap-settings', //'/tournament/sponsor-management',
+        },{
+          title: 'Subscriptions',
+          bullet: 'dot',
+          page: '/handicaps/handicap-subscriptions',
+        },{
+          title: 'Public Acccess',
+          bullet: 'dot',
+          page: '/handicaps/handicap-public',
+        },{
+          title: 'Handicap Management',
+          bullet: 'dot',
+          page: '/handicaps/handicap-management',
+        },{
+          title: 'Scorecard Approval',
+          bullet: 'dot',
+          page: '/handicaps/scorecard-approval',
+        },{
+          title: 'Player Administration',
+          bullet: 'dot',
+          page: '/handicaps/handicap-player-admin',
+        },{
+          title: 'Manual Score Entry',
+          bullet: 'dot',
+          page: '/handicaps/manual-score-entry',
+        }
+      ]
+    },
+    { section: 'Admin / General',
+      page: '/admin'},
+    { title: 'Generals',
+    root: true,
+    bullet: 'dot',
+    page: '/admin',
+    icon: 'flaticon2-browser-2',
+    svg: './assets/media/svg/icons/Design/Cap-2.svg',
+    submenu: [{
+        title: 'Sponsor Management',
+        bullet: 'dot',
+        page: '/admin/sponsor-management', //'/tournament/sponsor-management',
+        },{
+          title: 'Mapping',
+          bullet: 'dot',
+          page: '/admin/partner-management',
+        },{
+          title: 'Reports',
+          bullet: 'dot',
+          page: '/admin/reports',
+        }
+      ]
+    },
     // { section: 'Sponsors' },
     // {
     //   title: 'Sponsor Management',

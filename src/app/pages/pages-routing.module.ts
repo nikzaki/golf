@@ -69,7 +69,7 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'handicap',
+        path: 'handicaps',
         loadChildren: () =>
           import('../modules/sponsor-management/sponsor-management.module').then(
             (m) => m.SponsorManagementModule

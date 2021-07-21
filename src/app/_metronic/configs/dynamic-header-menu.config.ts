@@ -163,10 +163,10 @@ export const DynamicHeaderMenuConfig = {
     //   translate: 'MENU.PAYCOLLECTIONS',
     // },
     {
-      title: 'Handicap',
+      title: 'Handicaps',
       root: true,
       alignment: 'left',
-      page: '/handicap',
+      page: '/handicaps',
       translate: 'MENU.HANDICAP',
     },
     // {
@@ -176,13 +176,13 @@ export const DynamicHeaderMenuConfig = {
     //   page: '/dashboard',
     //   translate: 'MENU.ADMIN',
     // },
-    {
+    // {
       
-      title: 'Builder',
-      root: true,
-      alignment: 'left',
-      page: '/builder',
-    },
+    //   title: 'Builder',
+    //   root: true,
+    //   alignment: 'left',
+    //   page: '/builder',
+    // },
     // {
     //   title: 'Material UI',
     //   bullet: 'dot',

@@ -1,1 +1,16 @@
-<app-dashboard-wrapper></app-dashboard-wrapper>
+<app-dashboard-wrapper>
+</app-dashboard-wrapper>
+<h1>Dashboard here</h1>
+
+
+
+<!-- <label class="col-lg-3 col-form-label text-lg-right">Show All Menu:</label> -->
+            <span class="switch switch-icon">
+              <label>
+                <input type="checkbox" name="builder[aside][menu][showAll]" 
+                [(ngModel)]="model.aside.menu.showAll"
+                  value="true" />
+                <span></span>
+              </label>
+            </span>
+            <div class="form-text">Show all menu items</div>
