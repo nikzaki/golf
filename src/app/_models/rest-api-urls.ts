@@ -7,4 +7,7 @@ export const RestApiUrls: any = {
     getList: "rest/sponsors",
     deleteSponsor: "rest/sponsors/",
   },
+  countries: {
+    getList: "rest/countries/publicApi",
+  },
 };
