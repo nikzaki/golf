@@ -4,6 +4,7 @@ import {
   ListSponsorsComponent,
   AddEditSponsorComponent,
 } from "./_components/sponsors-components-index";
+import { SponsorResolver } from "./resolver/sponsor.resolver";
 
 const routes: Routes = [
   {
@@ -13,6 +14,13 @@ const routes: Routes = [
   {
     path: "add",
     component: AddEditSponsorComponent,
+  },
+  {
+    path: "edit/:id",
+    component: AddEditSponsorComponent,
+    resolve: {
+      sponsor: SponsorResolver
+    }
   },
 ];
 

@@ -198,7 +198,9 @@ export class ListSponsorsComponent
     this.router.navigateByUrl("/sponsor-management/add");
   }
 
-  edit(id: number) {}
+  edit(id: number) {
+    this.router.navigate([`sponsor-management/edit/${id}`]);
+  }
 
   delete(id: number) {
     const modalRef = this.modalService.open(DeleteModalComponent);

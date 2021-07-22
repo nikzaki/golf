@@ -5,7 +5,7 @@ import {
   OnInit,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { BehaviorSubject } from "rxjs";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { CommonService } from "src/app/_services/common.service";
@@ -28,8 +28,11 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
     private crudService: CrudService,
     private commonService: CommonService,
     private cdr: ChangeDetectorRef,
-    public router: Router
-  ) {}
+    public router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {
+    console.log('this.activatedRoute', this.activatedRoute.snapshot.data);
+  }
 
   ngOnInit(): void {
     this.getCountryList();
