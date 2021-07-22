@@ -21,9 +21,9 @@ import { SplashScreenModule } from "./_metronic/partials/layout/splash-screen/sp
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 // #fake-start#
 import { FakeAPIService } from "./_fake/fake-api.service";
-import { DynamicFormComponent } from "./_shared_components/dynamic-form/dynamic-form.component";
 import { ModalComponent } from "./_shared_components/modal/modal.component";
 import { CrudService } from "./_services/crud.service";
+import { SharedComponentsModule } from "./_shared_components/_shared-components.module";
 
 function appInitializer(authService: AuthService) {
   return () => {
@@ -34,7 +34,7 @@ function appInitializer(authService: AuthService) {
 }
 
 @NgModule({
-  declarations: [AppComponent, DynamicFormComponent, ModalComponent],
+  declarations: [AppComponent, ModalComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -47,14 +47,15 @@ function appInitializer(authService: AuthService) {
     // #fake-start#
     environment.isMockEnabled
       ? HttpClientInMemoryWebApiModule.forRoot(FakeAPIService, {
-          passThruUnknownUrl: true,
-          dataEncapsulation: false,
-        })
+        passThruUnknownUrl: true,
+        dataEncapsulation: false,
+      })
       : [],
     // #fake-end#
     AppRoutingModule,
     InlineSVGModule.forRoot(),
     NgbModule,
+    SharedComponentsModule
   ],
   providers: [
     {
@@ -84,4 +85,4 @@ function appInitializer(authService: AuthService) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

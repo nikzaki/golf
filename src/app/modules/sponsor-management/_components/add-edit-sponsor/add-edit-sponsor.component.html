@@ -1,0 +1,68 @@
+<div class="card card-custom gutter-b">
+    <div class="card-header">
+        <div class="card-title">
+            <h3 class="card-label">
+                New record
+            </h3>
+        </div>
+        <div class="card-toolbar">
+            <a type="button" class="btn btn-light" routerLink="/sponsor-management">
+                <i class="fa fa-arrow-left"></i>Back
+            </a>
+            <button (click)="onReset()" class="btn btn-secondary ml-2">
+                <i class="fa fa-redo"></i>Reset
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        <ng-container>
+            <div class="mt-5">
+                <form action="#" class="form form-label-right">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <div class="form-group row pb-0">
+                                <div class="col-lg-12">
+                                    <app-dynamic-form [form]="formGroup" key="name"></app-dynamic-form>
+                                </div>
+                                <div class="col-lg-12">
+                                    <app-dynamic-form [form]="formGroup" key="contactPerson"></app-dynamic-form>
+                                </div>
+                                <div class="col-lg-12">
+                                    <app-dynamic-form [form]="formGroup" key="website"></app-dynamic-form>
+                                </div>
+                            </div>
+                            <div class="form-group pt-0 row">
+
+                                <div class="col-lg-8">
+                                    <app-dynamic-form [countryData]="countryList" [form]="formGroup" key="country">
+                                    </app-dynamic-form>
+                                </div>
+                                <div class="col-lg-4 d-flex align-items-center">
+                                    <app-dynamic-form [form]="formGroup" key="status"></app-dynamic-form>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-5">
+                            <div class="form-group row justify-content-center">
+                                <app-dynamic-form (onChangeFile)="onChangeFile($event)" [form]="formGroup" key="image">
+                                </app-dynamic-form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group pt-0">
+                        <app-dynamic-form [imageSourceDefault]="imageSource" [form]="formGroup" key="description">
+                        </app-dynamic-form>
+                    </div>
+                    <div class="float-right">
+
+                        <button type="submit" [disabled]="formGroup.invalid" (click)="onSubmit()"
+                            class="btn btn-primary font-weight-bold mr-2">Save</button>
+                        <button class="btn btn-default font-weight-bold mr-2">Cancel</button>
+                    </div>
+                </form>
+            </div>
+        </ng-container>
+
+    </div>
+</div>

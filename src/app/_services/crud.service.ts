@@ -6,7 +6,7 @@ import { environment } from "../../environments/environment";
   providedIn: "root",
 })
 export class CrudService {
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   post(url: string, data: any) {
     return this.http.post<any>(environment.apiUrl + url, data);

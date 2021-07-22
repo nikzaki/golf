@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
@@ -22,8 +23,8 @@ import { DeleteModalModel } from "src/app/_models/delete-modal-model";
 import { PaginatorModel } from "src/app/_models/paginator.model";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { DeleteModalComponent } from "src/app/_shared_components/delete-modal/delete-modal.component";
-import { CustomersService } from "../_services/customers.service";
-import { SponsorsService } from "../_services/sponsors.service";
+import { CustomersService } from "../../_services/customers.service";
+import { SponsorsService } from "../../_services/sponsors.service";
 @Component({
   selector: "app-list-sponsors",
   templateUrl: "./list-sponsors.component.html",
@@ -62,7 +63,8 @@ export class ListSponsorsComponent
     private sponsorsService: SponsorsService,
     private fb: FormBuilder,
     private modalService: NgbModal,
-    public customerService: CustomersService
+    public customerService: CustomersService,
+    private router: Router
   ) {}
 
   // angular lifecircle hooks
@@ -193,9 +195,12 @@ export class ListSponsorsComponent
   // form actions
   create() {
     this.edit(undefined);
+    this.router.navigateByUrl("/sponsor-management/add");
   }
 
-  edit(id: number) {}
+  edit(id: number) {
+    this.router.navigate([`sponsor-management/edit/${id}`]);
+  }
 
   delete(id: number) {
     const modalRef = this.modalService.open(DeleteModalComponent);
