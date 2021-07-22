@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { BehaviorSubject, Subscription } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
@@ -64,7 +64,8 @@ export class ListSponsorsComponent
     private fb: FormBuilder,
     private modalService: NgbModal,
     public customerService: CustomersService,
-    private router: Router
+    private router: Router,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   // angular lifecircle hooks
@@ -81,6 +82,7 @@ export class ListSponsorsComponent
       search: this.searchInput,
     };
     // Get Dynamic data
+    console.log("this.activatedRoute ==>", this.activatedRoute.snapshot.data);
     this.getListData(this.paginatorObject);
     this.grouping = this.customerService.grouping;
     this.paginator = this.customerService.paginator;
@@ -92,21 +94,17 @@ export class ListSponsorsComponent
 
   // get List data with pagination
   getListData(data: any) {
-    this.sponsorsService.getListData(
-      data,
-      function (data) {
-        this.onSuccessResponse(data);
-      }.bind(this),
-      function (err) {
-        console.log("err :: while sponsors listing ==>", err);
-      }.bind(this)
-    );
+    const sb = this.sponsorsService.getListData(data).subscribe((res) => {
+      console.log("res ::  ==>", res);
+      this.onSuccessResponse(res);
+    });
+    this.subscriptions.push(sb);
   }
 
-  onSuccessResponse(data) {
-    this._items$.next(data.items);
-    this.paginator.total = data.totalItems;
-    this.grouping.itemIds = data.items.map((ele) => {
+  onSuccessResponse(res) {
+    this._items$.next(res.items);
+    this.paginator.total = res.totalItems;
+    this.grouping.itemIds = res.items.map((ele) => {
       return ele.id;
     });
   }
@@ -141,8 +139,8 @@ export class ListSponsorsComponent
     }
     this.customerService.patchState({ filter });
   }
-  3;
-  // search
+
+  // search Record
   searchForm() {
     this.searchGroup = this.fb.group({
       searchTerm: [""],

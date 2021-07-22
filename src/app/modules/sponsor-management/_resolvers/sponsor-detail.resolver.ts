@@ -11,17 +11,11 @@ import { SponsorsService } from "../_services/sponsors.service";
 @Injectable({
   providedIn: "root",
 })
-export class ListSponsorsResolver implements Resolve<boolean> {
+export class SponsorDetailResolver implements Resolve<boolean> {
   constructor(private sponsorsService: SponsorsService) {}
-  resolve(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable<boolean> {
-    return this.sponsorsService.getListData({
-      activeOrInactive: "B",
-      pageSize: 10,
-      pageNo: 1,
-      search: "",
-    });
+  resolve(route: ActivatedRouteSnapshot): Observable<any> {
+    return this.sponsorsService.getSponsorDetail(
+      parseInt(route.paramMap.get("id"))
+    );
   }
 }
