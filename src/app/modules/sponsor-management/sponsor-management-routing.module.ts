@@ -1,7 +1,9 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
-import { AddEditSponsorComponent } from "./add-edit-sponsor/add-edit-sponsor.component";
-import { ListSponsorsComponent } from './list-sponsors/list-sponsors.component';
+import {
+  ListSponsorsComponent,
+  AddEditSponsorComponent,
+} from "./_components/sponsors-components-index";
 
 const routes: Routes = [
   {
@@ -9,7 +11,7 @@ const routes: Routes = [
     component: ListSponsorsComponent,
   },
   {
-    path: 'add',
+    path: "add",
     component: AddEditSponsorComponent,
   },
 ];
@@ -18,4 +20,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class SponsorManagementRoutingModule { }
+export class SponsorManagementRoutingModule {}

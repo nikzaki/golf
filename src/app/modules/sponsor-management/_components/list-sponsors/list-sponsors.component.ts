@@ -23,8 +23,8 @@ import { DeleteModalModel } from "src/app/_models/delete-modal-model";
 import { PaginatorModel } from "src/app/_models/paginator.model";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { DeleteModalComponent } from "src/app/_shared_components/delete-modal/delete-modal.component";
-import { CustomersService } from "../_services/customers.service";
-import { SponsorsService } from "../_services/sponsors.service";
+import { CustomersService } from "../../_services/customers.service";
+import { SponsorsService } from "../../_services/sponsors.service";
 @Component({
   selector: "app-list-sponsors",
   templateUrl: "./list-sponsors.component.html",
@@ -32,19 +32,19 @@ import { SponsorsService } from "../_services/sponsors.service";
 })
 export class ListSponsorsComponent
   implements
-  OnInit,
-  OnDestroy,
-  ICreateAction,
-  IEditAction,
-  IDeleteAction,
-  IDeleteSelectedAction,
-  IFetchSelectedAction,
-  IUpdateStatusForSelectedAction,
-  ISortView,
-  IFilterView,
-  IGroupingView,
-  ISearchView,
-  IFilterView {
+    OnInit,
+    OnDestroy,
+    ICreateAction,
+    IEditAction,
+    IDeleteAction,
+    IDeleteSelectedAction,
+    IFetchSelectedAction,
+    IUpdateStatusForSelectedAction,
+    ISortView,
+    IFilterView,
+    IGroupingView,
+    ISearchView,
+    IFilterView {
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
@@ -65,7 +65,7 @@ export class ListSponsorsComponent
     private modalService: NgbModal,
     public customerService: CustomersService,
     private router: Router
-  ) { }
+  ) {}
 
   // angular lifecircle hooks
   ngOnInit(): void {
@@ -195,10 +195,10 @@ export class ListSponsorsComponent
   // form actions
   create() {
     this.edit(undefined);
-    this.router.navigateByUrl('/sponsor-management/add')
+    this.router.navigateByUrl("/sponsor-management/add");
   }
 
-  edit(id: number) { }
+  edit(id: number) {}
 
   delete(id: number) {
     const modalRef = this.modalService.open(DeleteModalComponent);
@@ -220,13 +220,13 @@ export class ListSponsorsComponent
         this.getListData(this.paginatorObject);
         this.searchGroup.reset();
       },
-      () => { }
+      () => {}
     );
   }
 
-  deleteSelected() { }
+  deleteSelected() {}
 
-  updateStatusForSelected() { }
+  updateStatusForSelected() {}
 
-  fetchSelected() { }
+  fetchSelected() {}
 }

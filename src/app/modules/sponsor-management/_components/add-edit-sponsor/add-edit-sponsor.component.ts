@@ -11,7 +11,7 @@ import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { CommonService } from "src/app/_services/common.service";
 import { CrudService } from "src/app/_services/crud.service";
 import { generateForm } from "src/app/_shared_components/dynamic-form/form-generate";
-import * as formService from "../../../_shared_components/dynamic-form/fields";
+import * as formService from "../../../../_shared_components/dynamic-form/fields";
 @Component({
   selector: "app-add-edit-sponsor",
   templateUrl: "./add-edit-sponsor.component.html",
@@ -29,7 +29,7 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
     private commonService: CommonService,
     private cdr: ChangeDetectorRef,
     public router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getCountryList();
@@ -57,12 +57,12 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
     req.subscribe(
       (data: any) => {
         if (data) {
-          this.router.navigate(['/sponsor-management']);
+          this.router.navigate(["/sponsor-management"]);
         }
       },
       (error: any) => {
         if (error) {
-          console.log(`error :: while adding sponsor ==>`, error)
+          console.log(`error :: while adding sponsor ==>`, error);
         }
       }
     );
