@@ -4,12 +4,18 @@ import {
   ListSponsorsComponent,
   AddEditSponsorComponent,
 } from "./_components/sponsors-components-index";
-import { SponsorResolver } from "./resolver/sponsor.resolver";
+import {
+  ListSponsorsResolver,
+  SponsorDetailResolver,
+} from "./_resolvers/sponsor-resolvers-index";
 
 const routes: Routes = [
   {
     path: "",
     component: ListSponsorsComponent,
+    resolve: {
+      sponsorListData: ListSponsorsResolver,
+    },
   },
   {
     path: "add",
@@ -19,8 +25,8 @@ const routes: Routes = [
     path: "edit/:id",
     component: AddEditSponsorComponent,
     resolve: {
-      sponsor: SponsorResolver
-    }
+      sponsorDetail: SponsorDetailResolver,
+    },
   },
 ];
 
