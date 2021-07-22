@@ -9,6 +9,7 @@ import { AddEditSponsorComponent } from './add-edit-sponsor/add-edit-sponsor.com
 import { SharedComponentsModule } from 'src/app/_shared_components/_shared-components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InlineSVGModule } from 'ng-inline-svg';
+import { SponsorResolver } from './resolver/sponsor.resolver';
 
 
 @NgModule({
@@ -22,6 +23,9 @@ import { InlineSVGModule } from 'ng-inline-svg';
     FormsModule,
     ReactiveFormsModule,
     InlineSVGModule
-  ]
+  ],
+  providers: [
+    SponsorResolver
+  ],
 })
 export class SponsorManagementModule { }

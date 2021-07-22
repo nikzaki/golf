@@ -1,25 +1,27 @@
+import { HttpErrorResponse } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
+import { catchError, map } from "rxjs/operators";
 import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { CrudService } from "src/app/_services/crud.service";
+import { throwError as observableThrowError } from 'rxjs';
 
 @Injectable({
   providedIn: "root",
 })
 export class SponsorsService {
-  constructor(private crudService: CrudService) {}
+  constructor(private crudService: CrudService) { }
 
   getListData(data: any, onSuccess: any, onFail: any) {
     var req = this.crudService.get(
       RestApiUrls.sponsors.getList +
-        "?activeOrInactive=" +
-        data.activeOrInactive +
-        "&pageSize=" +
-        data.pageSize +
-        "&pageNo=" +
-        data.pageNo +
-        "&search=" +
-        (data.search ? data.search : "")
+      "?activeOrInactive=" +
+      data.activeOrInactive +
+      "&pageSize=" +
+      data.pageSize +
+      "&pageNo=" +
+      data.pageNo +
+      "&search=" +
+      (data.search ? data.search : "")
     );
     req.subscribe(
       (data: any) => {
@@ -33,6 +35,21 @@ export class SponsorsService {
         }
       }
     );
+  }
+
+  getSingleSponsor(id: number) {
+    return this.crudService.get(
+      `${RestApiUrls.sponsors.getList}/${id}`
+    ).pipe(
+      map(res => {
+        return res;
+      }),
+      catchError(this.handleError));;
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    console.log("handleError error --> ", error);
+    return observableThrowError(error || "Server error");
   }
 
   delete(data: any, onSuccess: any, onFail: any) {
