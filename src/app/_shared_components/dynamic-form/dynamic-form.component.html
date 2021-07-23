@@ -73,8 +73,9 @@
         <label [for]="key">{{ fieldObj.label
             }}<span *ngIf="fieldObj.required" class="text-danger ml-2">*</span></label>
         <input [type]="fieldObj.controlType" class="form-control form-control-lg form-control-solid"
-            [class.is-invalid]="isControlInvalid(key)" [id]="key" [formControlName]="key"
-            [placeholder]="fieldObj.placeholder || ''" [autocomplete]="fieldObj.autofillOff ? 'off' : 'on'" />
+            [class.is-invalid]="isControlInvalid(key)" [class.is-valid]="isControlValid(key)" [id]="key"
+            [formControlName]="key" [placeholder]="fieldObj.placeholder || ''"
+            [autocomplete]="fieldObj.autofillOff ? 'off' : 'on'" />
         <div class="help-box" *ngIf="isInValid">
             <p class="invalid-feedback d-block" *ngIf="control?.errors?.required">
                 {{ fieldObj.label }} is required!

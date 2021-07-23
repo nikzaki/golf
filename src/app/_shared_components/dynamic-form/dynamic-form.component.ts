@@ -22,6 +22,7 @@ export class DynamicFormComponent implements OnInit {
   @Input() key: string;
   @Input() countryData;
   @Input() imageSourceDefault;
+  @Input() editImageSource;
   @Output() onChangeFile = new EventEmitter<any>();
   imageSource: string = "assets/media/users/blank.png";
 
@@ -41,7 +42,22 @@ export class DynamicFormComponent implements OnInit {
       this.imageSource = changes.imageSourceDefault.currentValue;
       this.cdr.detectChanges();
     }
+    // if (changes.editImageSource) {
+    //   console.log('changes.editImageSource', changes.editImageSource);
+    //   this.imageSource = changes.editImageSource.currentValue;
+    //   this.cdr.detectChanges();
+    // }
   }
+  // ngDoCheck(): void {
+  //   //Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.
+  //   //Add 'implements DoCheck' to the class.
+  //   if (this.editImageSource != undefined) {
+  //     this.imageSource = this.editImageSource;
+  //     console.log('ngDoCheck=======>>>>>', this.imageSource);
+
+  //     this.cdr.detectChanges();
+  //   }
+  // }
 
   get fieldObj() {
     return template_ref[this.key];
@@ -72,5 +88,10 @@ export class DynamicFormComponent implements OnInit {
   isControlInvalid(controlName: string): boolean {
     const control = this.form.controls[controlName];
     return control.invalid && (control.dirty || control.touched);
+  }
+
+  isControlValid(controlName: string): boolean {
+    const control = this.form.controls[controlName];
+    return control.valid && (control.dirty || control.touched);
   }
 }
