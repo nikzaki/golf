@@ -67,16 +67,29 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
 
   onChangeFile(file) {
     this.fileObj = file;
+    console.log("on change file : ", file)
     this.formGroup.controls["image"].setValue(file ? file.name : "");
   }
 
   onSubmit() {
     let formValue = this.formGroup.value;
-    const formDataObj = { ...formValue, image: this.fileObj };
+    // image: this.fileObj 
+    const formDataObj = { ...formValue, image: this.fileObj};
     let formData = new FormData();
     Object.keys(formDataObj).forEach((key: string) => {
-      formData.append(`${key}`, formDataObj[key]);
+      let _value = formDataObj[key];
+      if(key === 'country' && _value)
+        formData.append('address.country', formDataObj[key]);
+      else if(key === 'website' && _value)
+      formData.append('address.website', formDataObj[key]);
+      // else if(key === 'image')
+      //   // formData.append(`${key}`, 'Addidas.jpg');
+      //   console.log('image here ', key ," - ", formDataObj[key])
+      else if(_value)
+        formData.append(`${key}`, formDataObj[key]);
     });
+    console.log("form data >>", formData)
+    console.log("form obj >>", formDataObj)
     this.sponsorsService.addEditSponsor(
       formData,
       this.id ?  '/' + this.id : '',
@@ -84,7 +97,7 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
         this.onSuccessAddEditResponse(data);
       }.bind(this),
       function (err) {
-        console.log("err :: while add/edit sponsor ==>", err);
+        console.log("err :: while add/edit sponsor ==>", err, formData);
       }.bind(this)
     );
   }
