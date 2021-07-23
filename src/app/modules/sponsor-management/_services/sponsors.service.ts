@@ -43,7 +43,7 @@ export class SponsorsService {
   }
 
   delete(data: any, onSuccess: any, onFail: any) {
-    var req = this.crudService.delete(data.apiMethod, data.id);
+    const req = this.crudService.delete(data.apiMethod, data.id);
     req.subscribe(
       (data: any) => {
         if (onSuccess) {
@@ -59,7 +59,7 @@ export class SponsorsService {
   }
 
   addEditSponsor(data: any, id: string, onSuccess: any, onFail: any){
-    var req = this.crudService.post(RestApiUrls.sponsors.getList + id, data);
+    const req = this.crudService.post(RestApiUrls.sponsors.getList + id, data);
     req.subscribe(
       (data: any) => {
         if (onSuccess) {

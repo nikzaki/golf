@@ -13,8 +13,7 @@ export class PaginatorComponent implements OnInit {
   pageSizes: number[] = PageSizes;
   constructor() {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
 
   pageChange(num: number) {

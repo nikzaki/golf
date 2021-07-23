@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from "@angular/core";
+import { Component, OnInit, OnDestroy, AfterContentInit } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -6,10 +6,8 @@ import { BehaviorSubject, Subscription } from "rxjs";
 import { debounceTime, distinctUntilChanged } from "rxjs/operators";
 import {
   GroupingState,
-  ICreateAction,
   IDeleteAction,
   IDeleteSelectedAction,
-  IEditAction,
   IFetchSelectedAction,
   IFilterView,
   IGroupingView,
@@ -34,8 +32,7 @@ export class ListSponsorsComponent
   implements
     OnInit,
     OnDestroy,
-    ICreateAction,
-    IEditAction,
+    AfterContentInit,
     IDeleteAction,
     IDeleteSelectedAction,
     IFetchSelectedAction,
@@ -48,7 +45,7 @@ export class ListSponsorsComponent
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
-  isLoading: boolean;
+  isLoading: boolean = true;
   filterGroup: FormGroup;
   searchGroup: FormGroup;
   private subscriptions: Subscription[] = [];
@@ -82,10 +79,17 @@ export class ListSponsorsComponent
       search: this.searchInput,
     };
     // Get Dynamic data
-    console.log("this.activatedRoute ==>", this.activatedRoute.snapshot.data);
     this.getListData(this.paginatorObject);
     this.grouping = this.customerService.grouping;
     this.paginator = this.customerService.paginator;
+  }
+
+  ngAfterContentInit() {
+    // Get Dynamic data using Resolver
+    let listData = this.activatedRoute.snapshot.data.sponsorListData;
+    if (listData) {
+      this.onSuccessResponse(listData);
+    }
   }
 
   ngOnDestroy() {
@@ -95,7 +99,6 @@ export class ListSponsorsComponent
   // get List data with pagination
   getListData(data: any) {
     const sb = this.sponsorsService.getListData(data).subscribe((res) => {
-      console.log("res ::  ==>", res);
       this.onSuccessResponse(res);
     });
     this.subscriptions.push(sb);
@@ -103,6 +106,7 @@ export class ListSponsorsComponent
 
   onSuccessResponse(res) {
     this._items$.next(res.items);
+    this.isLoading = false;
     this.paginator.total = res.totalItems;
     this.grouping.itemIds = res.items.map((ele) => {
       return ele.id;
@@ -188,16 +192,6 @@ export class ListSponsorsComponent
     this.pageSize = paginator.pageSize;
     this.getListData(this.paginatorObject);
     this.grouping.selectedRowIds = new Set<number>();
-  }
-
-  // form actions
-  create() {
-    this.edit(undefined);
-    this.router.navigateByUrl("/sponsor-management/add");
-  }
-
-  edit(id: number) {
-    this.router.navigate([`sponsor-management/edit/${id}`]);
   }
 
   delete(id: number) {

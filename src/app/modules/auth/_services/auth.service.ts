@@ -48,7 +48,7 @@ export class AuthService implements OnDestroy {
 
   login(email: string, password: string, onSuccess: any, onFail: any) {
     this.isLoadingSubject.next(true);
-    var req = this.crudService.post(
+    const req = this.crudService.post(
       RestApiUrls.authenticate.authenticateUrl +
         "?username=" +
         email +
