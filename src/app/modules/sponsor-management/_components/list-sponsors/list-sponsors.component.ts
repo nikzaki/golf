@@ -82,7 +82,6 @@ export class ListSponsorsComponent
       search: this.searchInput,
     };
     // Get Dynamic data
-    console.log("this.activatedRoute ==>", this.activatedRoute.snapshot.data);
     this.getListData(this.paginatorObject);
     this.grouping = this.customerService.grouping;
     this.paginator = this.customerService.paginator;
@@ -95,7 +94,6 @@ export class ListSponsorsComponent
   // get List data with pagination
   getListData(data: any) {
     const sb = this.sponsorsService.getListData(data).subscribe((res) => {
-      console.log("res ::  ==>", res);
       this.onSuccessResponse(res);
     });
     this.subscriptions.push(sb);

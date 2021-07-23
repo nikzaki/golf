@@ -11,7 +11,7 @@ export class CommonService {
   constructor(private crudService: CrudService) { }
 
   getCountryList(onSuccess: any, onFail: any) {
-    var req = this.crudService.get(RestApiUrls.countries.getList);
+    const req = this.crudService.get(RestApiUrls.countries.getList);
     req.subscribe(
       (data: any) => {
         this.countryList = data

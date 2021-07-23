@@ -6,10 +6,8 @@ import {
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { BehaviorSubject, Subscription } from "rxjs";
-import { RestApiUrls } from "src/app/_models/rest-api-urls";
+import { Subscription } from "rxjs";
 import { CommonService } from "src/app/_services/common.service";
-import { CrudService } from "src/app/_services/crud.service";
 import { generateForm } from "src/app/_shared_components/dynamic-form/form-generate";
 import * as formService from "../../../../_shared_components/dynamic-form/fields";
 import { SponsorsService } from "../../_services/sponsors.service";
@@ -28,11 +26,10 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
   private subscriptions: Subscription[] = [];
   sponsorDetail: any;
   id: string;
-  public title: string = 'New Record';
+  public title: string = "New Record";
 
   constructor(
     private fb: FormBuilder,
-    private crudService: CrudService,
     private commonService: CommonService,
     private cdr: ChangeDetectorRef,
     public router: Router,
@@ -46,7 +43,7 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
       if (params.id) {
         this.id = params.id;
         this.isEdit = true;
-        this.title = 'Edit Record'
+        this.title = "Edit Record";
       }
     });
     this.subscriptions.push(sb);
@@ -57,7 +54,7 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
   }
 
   ngAfterContentInit() {
-    var fieldArray = generateForm(this.form);
+    const fieldArray = generateForm(this.form);
     this.formGroup = this.fb.group(fieldArray);
     this.sponsorDetail = this.activatedRoute.snapshot.data.sponsorDetail;
     if (this.sponsorDetail) {
@@ -67,37 +64,29 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
 
   onChangeFile(file) {
     this.fileObj = file;
-    console.log("on change file : ", file)
     this.formGroup.controls["image"].setValue(file ? file.name : "");
   }
 
   onSubmit() {
     let formValue = this.formGroup.value;
-    // image: this.fileObj 
-    const formDataObj = { ...formValue, image: this.fileObj};
+    const formDataObj = { ...formValue, image: this.fileObj };
     let formData = new FormData();
     Object.keys(formDataObj).forEach((key: string) => {
       let _value = formDataObj[key];
-      if(key === 'country' && _value)
-        formData.append('address.country', formDataObj[key]);
-      else if(key === 'website' && _value)
-      formData.append('address.website', formDataObj[key]);
-      // else if(key === 'image')
-      //   // formData.append(`${key}`, 'Addidas.jpg');
-      //   console.log('image here ', key ," - ", formDataObj[key])
-      else if(_value)
-        formData.append(`${key}`, formDataObj[key]);
+      if (key === "country" && _value)
+        formData.append("address.country", formDataObj[key]);
+      else if (key === "website" && _value)
+        formData.append("address.website", formDataObj[key]);
+      else if (_value) formData.append(`${key}`, formDataObj[key]);
     });
-    console.log("form data >>", formData)
-    console.log("form obj >>", formDataObj)
     this.sponsorsService.addEditSponsor(
       formData,
-      this.id ?  '/' + this.id : '',
+      this.id ? "/" + this.id : "",
       function (data) {
         this.onSuccessAddEditResponse(data);
       }.bind(this),
       function (err) {
-        console.log("err :: while add/edit sponsor ==>", err, formData);
+        console.log("err :: while add/edit sponsor ==>", err);
       }.bind(this)
     );
   }
@@ -113,7 +102,7 @@ export class AddEditSponsorComponent implements OnInit, AfterContentInit {
         this.cdr.detectChanges();
       }.bind(this),
       function (err) {
-        console.log("err :: while sponsors listing ==>", err);
+        console.log("err :: while countries listing ==>", err);
       }.bind(this)
     );
   }
