@@ -91,6 +91,8 @@
       </li>
       <!-- Components -->
       <!-- begin::section -->
+      <!-- start of courses menu -->
+      <ng-container *ngIf="currentUrl === '/courses'" >
       <li class="menu-section">
         <h4 class="menu-text">Courses</h4>
         <i class="menu-icon flaticon-more-v2"></i>
@@ -709,6 +711,8 @@
           </ul>
         </div>
       </li>
+    </ng-container>
+    <!-- end of courses menu -->
       <!-- end::1 Level -->
 
       <!-- Applications -->

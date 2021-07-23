@@ -68,10 +68,17 @@ export class AsideDynamicComponent implements OnInit, OnDestroy {
   }
 
   private getLogo() {
+    // if (this.brandSkin === 'light') {
+    //   return './assets/media/logos/logo-dark.png';
+    // } else {
+    //   return './assets/media/logos/logo-light.png';
+    // }
+    
     if (this.brandSkin === 'light') {
-      return './assets/media/logos/logo-dark.png';
+      // return './assets/media/logos/logo-dark.png';
+      return './assets/media/logos/myGolf2u.svg';
     } else {
-      return './assets/media/logos/logo-light.png';
+      return './assets/media/logos/myGolf2u.svg';
     }
   }
 
@@ -93,5 +100,32 @@ export class AsideDynamicComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptions.forEach(sb => sb.unsubscribe());
+  }
+
+  isMenuShowAll() {
+    return this.layout.getProp('aside.menu.showAll')
+  }
+
+  isMenuEntered(path) {
+    // console.log("is menu item entered : path -  ", path)
+    // console.log("is menu item entered : current Url -  ", this.currentUrl)
+    // console.log("is menu item entered : current Url indexOf-  ", this.currentUrl.indexOf(path) )
+
+    // let _path = path;
+    // if(path) console.log("is menu item entered : path split  ", path.split("/",2))
+    let _path;
+    let _currentUrl;
+    if(path) _path = path.split("/",2)[1];
+    if(this.currentUrl) _currentUrl = this.currentUrl.split("/",2)[1];
+    // if(this.currentUrl) console.log("is menu item entered : current Url split  ", this.currentUrl.split(/[?#]/)[0] )
+    // if(path) _path = path.split(/[?#]/)[0];
+    if(path === '/')
+      return true
+    else if( path === '/dashboard')
+      return true
+    else if (path === '/builder')
+      return true
+    // else return this.currentUrl.indexOf(_path)
+    else return _currentUrl === _path
   }
 }

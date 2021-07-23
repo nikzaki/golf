@@ -1,6 +1,7 @@
 import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { LayoutService } from '../../../../_metronic/core';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-aside',
@@ -19,8 +20,12 @@ export class AsideComponent implements OnInit {
   brandClasses: string;
   asideMenuScroll = 1;
   asideSelfMinimizeToggle = false;
+  currentUrl: string = "/"
 
-  constructor(private layout: LayoutService, private loc: Location) { }
+  constructor(private layout: LayoutService, private loc: Location,
+    private router: Router,
+    private activatedRoute: ActivatedRoute)
+   { }
 
   ngOnInit(): void {
     // load view settings
@@ -40,6 +45,25 @@ export class AsideComponent implements OnInit {
     // this.asideMenuCSSClasses = `${this.asideMenuCSSClasses} ${this.asideMenuScroll === 1 ? 'scroll my-4 ps ps--active-y' : ''}`;
     // Routing
     this.location = this.loc;
+
+    // console.log("activated route : ", this.activatedRoute.component);
+    // console.log("current route url : ", this.router.url)
+  }
+
+  ngAfterContentChecked() {
+    
+    // console.log("Content Check activated route : ", this.activatedRoute.url);
+    // console.log("Content Check activated route parent : ", this.activatedRoute.parent);
+    // console.log("Content Check current route url : ", this.router.url);
+    if(this.router.url) 
+      this.currentUrl = this.router.url.split(/[?#]/)[0];
+    
+    console.log("Current Url: ", this.currentUrl);
+      // this.currentUrl = this.router.url;
+    
+    
+    // if(this.router && this.router.getCurrentNavigation())
+    //   console.log("Content Check current route extracted url : ", this.router.getCurrentNavigation().extractedUrl.fragment)
   }
 
   private getLogo() {

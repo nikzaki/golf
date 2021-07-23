@@ -9,7 +9,9 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "rtl": "webpack --config webpack-rtl.config.js",
-        "postinstall": "ng build --prod"
+        "postinstall": "ng build --prod",
+        "compodoc": "npx compodoc -p tsconfig.doc.json --disableDependencies --minimal",
+        "servedoc": "npx compodoc -p tsconfig.doc.json -s --port=4203 --disableDependencies --minimal"
     },
     "private": true,
     "dependencies": {
@@ -54,6 +56,7 @@
         "@angular-devkit/build-angular": "~0.1100.1",
         "@angular/cli": "~11.0.1",
         "@angular/compiler-cli": "~11.0.0",
+        "@compodoc/compodoc": "^1.1.14",
         "@types/jasmine": "~3.6.0",
         "@types/jasminewd2": "~2.0.8",
         "@types/node": "^14.11.10",
