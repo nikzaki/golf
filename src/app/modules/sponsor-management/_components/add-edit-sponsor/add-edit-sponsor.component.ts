@@ -2,6 +2,7 @@ import {
   AfterContentInit,
   ChangeDetectorRef,
   Component,
+  OnDestroy,
   OnInit,
 } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
@@ -16,7 +17,8 @@ import { SponsorsService } from "../../_services/sponsors.service";
   templateUrl: "./add-edit-sponsor.component.html",
   styleUrls: ["./add-edit-sponsor.component.scss"],
 })
-export class AddEditSponsorComponent implements OnInit, AfterContentInit {
+export class AddEditSponsorComponent
+  implements OnInit, AfterContentInit, OnDestroy {
   countryList: any = [];
   fileObj: any = {};
   imageSource: string;

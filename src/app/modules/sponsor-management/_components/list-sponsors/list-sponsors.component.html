@@ -4,7 +4,11 @@
       <h3 class="card-label">Sponsors Management</h3>
     </div>
     <div class="card-toolbar">
-      <button type="button" class="btn btn-primary" (click)="create()">
+      <button
+        type="button"
+        class="btn btn-primary"
+        routerLink="/sponsor-management/add"
+      >
         New Record
       </button>
     </div>
@@ -118,9 +122,6 @@
                 [checked]="grouping.checkAreAllRowsSelected()" /><span></span
             ></label>
           </th>
-          <!-- <th>
-            ID
-          </th> -->
           <th width="15%">Name of Sponsor</th>
           <th width="15%">Country</th>
           <th width="40%">Description</th>
@@ -139,7 +140,6 @@
                 <span></span>
               </label>
             </td>
-            <!-- <td>{{ data.id }}</td> -->
             <td width="15%">{{ data.name }}</td>
             <td width="15%">{{ data.country?.name }}</td>
             <td width="40%">{{ data.description }}</td>
@@ -148,7 +148,7 @@
               <a
                 title="Edit customer"
                 class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-                (click)="edit(data.id)"
+                [routerLink]="'edit/' + data.id"
               >
                 <span
                   [inlineSVG]="
