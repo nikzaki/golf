@@ -21,9 +21,8 @@ import { SponsorsService } from "../../_services/sponsors.service";
 export class AddEditSponsorComponent
   implements OnInit, AfterContentInit, OnDestroy {
   countryList: any = [];
-  fileObj: any = {};
-  imageSource: string;
-  editImageSource: string;
+  fileObj: any;
+  imageSource: string = "assets/media/users/blank.png";
   public formGroup: FormGroup;
   public form = formService.segment["sponsorForm"].fields;
   isEdit: boolean = false;
@@ -39,7 +38,7 @@ export class AddEditSponsorComponent
     public router: Router,
     private activatedRoute: ActivatedRoute,
     private sponsorsService: SponsorsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getCountryList();
@@ -62,33 +61,31 @@ export class AddEditSponsorComponent
     this.formGroup = this.fb.group(fieldArray);
     this.sponsorDetail = this.activatedRoute.snapshot.data.sponsorDetail;
     if (this.sponsorDetail) {
-      this.editImageSource = `${environment.apiUrl}${this.sponsorDetail.image}`
+      this.imageSource = `${environment.apiUrl}${this.sponsorDetail.image}`;
       this.formGroup.patchValue(this.sponsorDetail);
-      this.formGroup.controls["country"].setValue(this.sponsorDetail.country?.id);
-      this.formGroup.controls["website"].setValue(this.sponsorDetail.address?.webSite);
-      this.formGroup.controls["image"].setValue(this.editImageSource);
+      this.formGroup.controls["country"].setValue(
+        this.sponsorDetail.country?.id
+      );
+      this.formGroup.controls["website"].setValue(
+        this.sponsorDetail.address?.webSite
+      );
     }
   }
 
   onChangeFile(file) {
     this.fileObj = file;
-    this.formGroup.controls["image"].setValue(file ? file.name : "");
   }
 
   onSubmit() {
     let formValue = this.formGroup.value;
     const formDataObj = { ...formValue, image: this.fileObj };
-    let formData = new FormData();
-    if (Object.keys(this.fileObj).length === 0) {
-      delete formDataObj['image']
+    if (!this.fileObj) {
+      delete formDataObj["image"];
     }
+    let formData = new FormData();
     Object.keys(formDataObj).forEach((key: string) => {
       let _value = formDataObj[key];
-      if (key === "country" && _value)
-        formData.append("address.country", formDataObj[key]);
-      else if (key === "website" && _value)
-        formData.append("address.website", formDataObj[key]);
-      else if (_value) formData.append(`${key}`, formDataObj[key]);
+      if (_value) formData.append(`${key}`, formDataObj[key]);
     });
     this.sponsorsService.addEditSponsor(
       formData,
@@ -124,12 +121,16 @@ export class AddEditSponsorComponent
 
   onReset() {
     this.formGroup.reset();
-    this.formGroup.controls["country"].setValue("AFG");
-    this.formGroup.controls["status"].setValue("Active");
     this.imageSource = "assets/media/users/blank.png";
     if (this.isEdit) {
       this.formGroup.patchValue(this.sponsorDetail);
+      this.imageSource = `${environment.apiUrl}${this.sponsorDetail.image}`;
     }
+    this.formGroup.controls["country"].setValue("AFG");
+    this.formGroup.controls["status"].setValue("Active");
+    this.formGroup.controls["website"].setValue(
+      this.sponsorDetail.address?.webSite
+    );
     this.cdr.detectChanges();
   }
 }
