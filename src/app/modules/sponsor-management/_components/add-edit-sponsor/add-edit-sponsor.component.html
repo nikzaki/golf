@@ -77,13 +77,16 @@
           <div class="float-right">
             <button
               type="submit"
-              [disabled]="formGroup.invalid"
+              [disabled]="formGroup.invalid || isDisabled"
               (click)="onSubmit()"
               class="btn btn-primary font-weight-bold mr-2"
             >
               Save
             </button>
-            <button class="btn btn-default font-weight-bold mr-2" routerLink="/sponsor-management">
+            <button
+              class="btn btn-default font-weight-bold mr-2"
+              routerLink="/sponsor-management"
+            >
               Cancel
             </button>
           </div>
