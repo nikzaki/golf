@@ -107,22 +107,13 @@
     />
     <div class="help-box" *ngIf="isInValid">
       <p class="invalid-feedback d-block" *ngIf="control?.errors?.required">
-        {{ fieldObj.label }} is required!
-      </p>
-      <p class="invalid-feedback d-block" *ngIf="control?.errors?.email">
-        Please enter valid email ID!
+        This field is required.
       </p>
       <p
         class="invalid-feedback d-block"
-        *ngIf="control?.errors?.pattern && key == 'contactPerson'"
+        *ngIf="control?.errors?.email || control?.errors?.pattern"
       >
-        Please enter valid mobile number.
-      </p>
-      <p
-        class="invalid-feedback d-block"
-        *ngIf="control?.errors?.pattern && key == 'website'"
-      >
-        Please enter valid website url.
+        Invalid entry.
       </p>
     </div>
   </div>
