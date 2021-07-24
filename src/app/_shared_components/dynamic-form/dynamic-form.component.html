@@ -1,94 +1,120 @@
 <div [formGroup]="form" [ngSwitch]="true">
-    <ng-container *ngSwitchCase="fieldObj.controlType === 'radio'">
-        <div class="form-group">
-            <label>Status</label>
-            <div class="radio-inline">
-                <ng-container *ngFor="let g of fieldObj.options">
-                    <label class="radio">
-                        <input type="radio" [name]="key" [value]="g" [formControlName]="key" />
-                        <span></span>
-                        {{ g }}
-                    </label>
-                </ng-container>
-            </div>
-        </div>
-    </ng-container>
-
-    <div class="dropdown" *ngSwitchCase="fieldObj.controlType === 'dropdown'">
-        <div class="form-group">
-            <label for="exampleSelect1">{{ fieldObj.label }}
-                <span class="text-danger" *ngIf="fieldObj.required">*</span></label>
-            <select [formControlName]="key" class="form-control form-control-lg form-control-solid" id="exampleSelect1">
-                <option *ngFor="let el of countryData" [value]="el.id">
-                    {{ el.name }}
-                </option>
-            </select>
-        </div>
+  <ng-container *ngSwitchCase="fieldObj.controlType === 'radio'">
+    <div class="form-group">
+      <label>Status</label>
+      <div class="radio-inline">
+        <ng-container *ngFor="let g of fieldObj.options">
+          <label class="radio">
+            <input
+              type="radio"
+              [name]="key"
+              [value]="g"
+              [formControlName]="key"
+            />
+            <span></span>
+            {{ g }}
+          </label>
+        </ng-container>
+      </div>
     </div>
+  </ng-container>
 
-    <div *ngSwitchCase="fieldObj.controlType === 'textarea'">
-        <label [for]="key">{{ fieldObj.label }}</label>
-        <textarea [name]="key" [id]="key" cols="30" rows="3" class="form-control form-control-solid"
-            [formControlName]="key"></textarea>
-        <div class="help-box" *ngIf="isInValid">
-            <p *ngIf="control.errors.required">Please enter Address.</p>
-        </div>
+  <div class="dropdown" *ngSwitchCase="fieldObj.controlType === 'dropdown'">
+    <div class="form-group">
+      <label for="exampleSelect1"
+        >{{ fieldObj.label }}
+        <span class="text-danger" *ngIf="fieldObj.required">*</span></label
+      >
+      <select
+        [formControlName]="key"
+        class="form-control form-control-lg form-control-solid"
+        id="exampleSelect1"
+      >
+        <option *ngFor="let el of countryData" [value]="el.id">
+          {{ el.name }}
+        </option>
+      </select>
     </div>
+  </div>
 
-    <div class="form-group" *ngSwitchCase="fieldObj.controlType === 'fileUploader'">
-        <div class="image-input text-center" id="kt_image_2">
-            <div class="image-input-wrapper sponsor-img" [ngStyle]="{ 'background-image': 'url(' + imageSource + ')' }">
-            </div>
-
-            <label class="
-          btn
-          btn-xs
-          btn-icon
-          btn-circle
-          btn-white
-          btn-hover-text-primary
-          btn-shadow
-        " data-action="change" data-toggle="tooltip" title="" data-original-title="Change avatar">
-                <i class="fa fa-pen icon-sm text-muted"></i>
-                <input type="file" (change)="handleFileInput($event)" name="profile_avatar"
-                    accept=".png, .jpg, .jpeg" />
-                <input type="hidden" name="profile_avatar_remove" />
-            </label>
-
-            <span class="
-          btn
-          btn-xs
-          btn-icon
-          btn-circle
-          btn-white
-          btn-hover-text-primary
-          btn-shadow
-        " data-action="cancel" data-toggle="tooltip" title="Cancel avatar">
-                <i class="ki ki-bold-close icon-xs text-muted"></i>
-            </span>
-        </div>
+  <div *ngSwitchCase="fieldObj.controlType === 'textarea'">
+    <label [for]="key">{{ fieldObj.label }}</label>
+    <textarea
+      [name]="key"
+      [id]="key"
+      cols="30"
+      rows="3"
+      class="form-control form-control-solid"
+      [formControlName]="key"
+    ></textarea>
+    <div class="help-box" *ngIf="isInValid">
+      <p *ngIf="control.errors.required">Please enter Address.</p>
     </div>
+  </div>
 
-    <div class="form-group" *ngSwitchDefault>
-        <label [for]="key">{{ fieldObj.label
-            }}<span *ngIf="fieldObj.required" class="text-danger ml-2">*</span></label>
-        <input [type]="fieldObj.controlType" class="form-control form-control-lg form-control-solid"
-            [class.is-invalid]="isControlInvalid(key)" [class.is-valid]="isControlValid(key)" [id]="key"
-            [formControlName]="key" [placeholder]="fieldObj.placeholder || ''"
-            [autocomplete]="fieldObj.autofillOff ? 'off' : 'on'" />
-        <div class="help-box" *ngIf="isInValid">
-            <p class="invalid-feedback d-block" *ngIf="control?.errors?.required">
-                {{ fieldObj.label }} is required!
-            </p>
-            <p class="invalid-feedback d-block" *ngIf="control?.errors?.email">
-                Please enter valid email ID!
-            </p>
-            <p class="invalid-feedback d-block" *ngIf="control?.errors?.pattern && key == 'contactPerson'">
-                Please enter valid mobile number.
-            </p>
-            <p class="invalid-feedback d-block" *ngIf="control?.errors?.pattern && key == 'website'">
-                Please enter valid website url.
-            </p>
-        </div>
+  <div
+    class="form-group"
+    *ngSwitchCase="fieldObj.controlType === 'fileUploader'"
+  >
+    <div class="image-input text-center" id="kt_image_2">
+      <div
+        class="image-input-wrapper sponsor-img"
+        [ngStyle]="{ 'background-image': 'url(' + imageSourceDefault + ')' }"
+      ></div>
+
+      <label
+        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+        data-action="change"
+        data-toggle="tooltip"
+        title=""
+        data-original-title="Change avatar"
+      >
+        <i class="fa fa-pen icon-sm text-muted"></i>
+        <input
+          type="file"
+          (change)="handleFileInput($event)"
+          name="profile_avatar"
+          accept=".png, .jpg, .jpeg"
+        />
+        <input type="hidden" name="profile_avatar_remove" />
+      </label>
+
+      <span
+        class="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
+        data-action="cancel"
+        data-toggle="tooltip"
+        title="Cancel avatar"
+      >
+        <i class="ki ki-bold-close icon-xs text-muted"></i>
+      </span>
     </div>
+  </div>
+
+  <div class="form-group" *ngSwitchDefault>
+    <label [for]="key"
+      >{{ fieldObj.label
+      }}<span *ngIf="fieldObj.required" class="text-danger ml-2">*</span></label
+    >
+    <input
+      [type]="fieldObj.controlType"
+      class="form-control form-control-lg form-control-solid"
+      [class.is-invalid]="isControlInvalid(key)"
+      [class.is-valid]="isControlValid(key)"
+      [id]="key"
+      [formControlName]="key"
+      [placeholder]="fieldObj.placeholder || ''"
+      [autocomplete]="fieldObj.autofillOff ? 'off' : 'on'"
+    />
+    <div class="help-box" *ngIf="isInValid">
+      <p class="invalid-feedback d-block" *ngIf="control?.errors?.required">
+        This field is required.
+      </p>
+      <p
+        class="invalid-feedback d-block"
+        *ngIf="control?.errors?.email || control?.errors?.pattern"
+      >
+        Invalid entry.
+      </p>
+    </div>
+  </div>
 </div>

@@ -20,17 +20,17 @@ import { SponsorsService } from "../../_services/sponsors.service";
 })
 export class AddEditSponsorComponent
   implements OnInit, AfterContentInit, OnDestroy {
-  countryList: any = [];
-  fileObj: any = {};
-  imageSource: string;
-  editImageSource: string;
   public formGroup: FormGroup;
   public form = formService.segment["sponsorForm"].fields;
-  isEdit: boolean = false;
   private subscriptions: Subscription[] = [];
-  sponsorDetail: any;
-  id: string;
   public title: string = "New Record";
+  isEdit: boolean = false;
+  isDisabled: boolean = false;
+  countryList: any = [];
+  fileObj: any;
+  imageSource: string = "assets/media/users/blank.png";
+  id: string;
+  sponsorDetailObj: any;
 
   constructor(
     private fb: FormBuilder,
@@ -39,7 +39,7 @@ export class AddEditSponsorComponent
     public router: Router,
     private activatedRoute: ActivatedRoute,
     private sponsorsService: SponsorsService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.getCountryList();
@@ -60,41 +60,47 @@ export class AddEditSponsorComponent
   ngAfterContentInit() {
     const fieldArray = generateForm(this.form);
     this.formGroup = this.fb.group(fieldArray);
-    this.sponsorDetail = this.activatedRoute.snapshot.data.sponsorDetail;
-    if (this.sponsorDetail) {
-      this.editImageSource = `${environment.apiUrl}${this.sponsorDetail.image}`
-      this.formGroup.patchValue(this.sponsorDetail);
-      this.formGroup.controls["country"].setValue(this.sponsorDetail.country?.id);
-      this.formGroup.controls["website"].setValue(this.sponsorDetail.address?.webSite);
-      this.formGroup.controls["image"].setValue(this.editImageSource);
+    let sponsorDetail = this.activatedRoute.snapshot.data.sponsorDetail;
+    if (sponsorDetail) {
+      this.imageSource = `${environment.apiUrl}${sponsorDetail.image}`;
+      this.formGroup.patchValue(sponsorDetail);
+      this.formGroup.controls["country"].setValue(sponsorDetail.country?.id);
+      this.formGroup.controls["website"].setValue(
+        sponsorDetail.address?.webSite
+      );
+      this.sponsorDetailObj = this.formGroup.value;
     }
   }
 
   onChangeFile(file) {
     this.fileObj = file;
-    this.formGroup.controls["image"].setValue(file ? file.name : "");
   }
 
   onSubmit() {
+    this.isDisabled = true;
     let formValue = this.formGroup.value;
     const formDataObj = { ...formValue, image: this.fileObj };
-    let formData = new FormData();
-    if (Object.keys(this.fileObj).length === 0) {
-      delete formDataObj['image']
+    const compareData =
+      JSON.stringify(this.sponsorDetailObj) === JSON.stringify(formValue);
+
+    if (compareData && !this.fileObj) {
+      console.log("Data is not changed at all, so no need to call API ==>");
+      this.router.navigate(["/sponsor-management"]);
+      return;
     }
+    if (!this.fileObj) {
+      delete formDataObj["image"];
+    }
+    let formData = new FormData();
     Object.keys(formDataObj).forEach((key: string) => {
       let _value = formDataObj[key];
-      if (key === "country" && _value)
-        formData.append("address.country", formDataObj[key]);
-      else if (key === "website" && _value)
-        formData.append("address.website", formDataObj[key]);
-      else if (_value) formData.append(`${key}`, formDataObj[key]);
+      if (_value) formData.append(`${key}`, formDataObj[key]);
     });
     this.sponsorsService.addEditSponsor(
       formData,
       this.id ? "/" + this.id : "",
       function (data) {
-        this.onSuccessAddEditResponse(data);
+        if (data) this.onSuccessAddEditResponse(data);
       }.bind(this),
       function (err) {
         console.log("err :: while add/edit sponsor ==>", err);
@@ -124,12 +130,13 @@ export class AddEditSponsorComponent
 
   onReset() {
     this.formGroup.reset();
-    this.formGroup.controls["country"].setValue("AFG");
-    this.formGroup.controls["status"].setValue("Active");
     this.imageSource = "assets/media/users/blank.png";
     if (this.isEdit) {
-      this.formGroup.patchValue(this.sponsorDetail);
+      this.formGroup.patchValue(this.sponsorDetailObj);
+      this.imageSource = `${environment.apiUrl}${this.sponsorDetailObj.image}`;
     }
+    this.formGroup.controls["country"].setValue("AFG");
+    this.formGroup.controls["status"].setValue("Active");
     this.cdr.detectChanges();
   }
 }
