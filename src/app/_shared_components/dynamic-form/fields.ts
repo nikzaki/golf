@@ -10,7 +10,7 @@ const template_ref = {
         controlType: "text",
         required: true,
         autofillOff: true,
-        pattern: /^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$/,
+        pattern: '(([+][(]?[0-9]{1,3}[)]?)|([(]?[0-9]{4}[)]?))\s*[)]?[-\s\.]?[(]?[0-9]{1,3}[)]?([-\s\.]?[0-9]{3})([-\s\.]?[0-9]{3,4})',
     },
     description: {
         controlType: "textarea",
