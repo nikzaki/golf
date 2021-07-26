@@ -1,3 +1,8 @@
+.sponsor-table {
+  td {
+    word-break: break-all;
+  }
+}
 .cstm-card {
   background: transparent;
   .cstm-card-header,
@@ -41,4 +46,9 @@
 }
 .loader-right {
   right: 28px;
+}
+.res-padding {
+  @media screen and (max-width: 767.98px) {
+    padding: 0;
+  }
 }
