@@ -20,11 +20,15 @@
   </ng-container>
 
   <ng-container *ngIf="isError">
-    <span>Something went wrong!! Please try again!!</span>
+    <span>This Record can not be deleted... </span>
+    <div>{{ errorMsg }}</div>
   </ng-container>
 
   <ng-container *ngIf="!isLoading && !isError">
-    <span>Are you sure you want to permanently delete this {{ data.content }}?</span>
+    <span
+      >Are you sure you want to permanently delete this
+      {{ data.content }}?</span
+    >
   </ng-container>
 </div>
 
