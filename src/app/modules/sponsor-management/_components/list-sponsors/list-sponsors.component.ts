@@ -229,10 +229,6 @@ export class ListSponsorsComponent
     this.getListData(this.paginatorObject);
   }
 
-  showCloseButton() {
-    return this.searchInput && this.searchInput.length && !this.isLoading
-  }
-
   deleteSelected() { }
 
   updateStatusForSelected() { }
