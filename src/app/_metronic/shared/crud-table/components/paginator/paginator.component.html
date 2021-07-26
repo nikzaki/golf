@@ -30,7 +30,9 @@
     </option></select
   ><span class="react-bootstrap-table-pagin ation-total"
     >&nbsp;Showing rows {{ paginator.page }} to&nbsp;{{
-      paginator.pageSize
+      paginator.total > paginator.pageSize
+        ? paginator.pageSize
+        : paginator.total
     }}
     of&nbsp;{{ paginator.total }}</span
   >
