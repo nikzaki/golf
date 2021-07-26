@@ -14,6 +14,7 @@ export class DeleteModalComponent implements OnInit {
   isLoading = false;
   subscriptions: Subscription[] = [];
   isError: boolean = false;
+  errorMsg: string = "";
 
   constructor(
     private sponsorsService: SponsorsService,
@@ -48,6 +49,7 @@ export class DeleteModalComponent implements OnInit {
   onError(err: any) {
     this.isError = true;
     this.isLoading = false;
+    if (err.errorMessage) this.errorMsg = err.errorMessage;
   }
 
   ngOnDestroy(): void {
