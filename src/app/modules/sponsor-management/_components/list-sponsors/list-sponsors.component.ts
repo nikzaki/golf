@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, AfterContentInit } from "@angular/core";
+import { Component, OnInit, OnDestroy, AfterContentInit, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -32,18 +32,18 @@ import { environment } from "src/environments/environment";
 })
 export class ListSponsorsComponent
   implements
-    OnInit,
-    OnDestroy,
-    AfterContentInit,
-    IDeleteAction,
-    IDeleteSelectedAction,
-    IFetchSelectedAction,
-    IUpdateStatusForSelectedAction,
-    ISortView,
-    IFilterView,
-    IGroupingView,
-    ISearchView,
-    IFilterView {
+  OnInit,
+  OnDestroy,
+  AfterContentInit,
+  IDeleteAction,
+  IDeleteSelectedAction,
+  IFetchSelectedAction,
+  IUpdateStatusForSelectedAction,
+  ISortView,
+  IFilterView,
+  IGroupingView,
+  ISearchView,
+  IFilterView {
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
@@ -58,6 +58,7 @@ export class ListSponsorsComponent
   _items$ = new BehaviorSubject<[]>([]);
   pageSize = 10;
   public imageBaseURL = environment.apiUrl;
+  @ViewChild('searchSponsorInput', { static: true }) searchSponsorInput: ElementRef;
 
   constructor(
     private sponsorsService: SponsorsService,
@@ -65,8 +66,9 @@ export class ListSponsorsComponent
     private modalService: NgbModal,
     public customerService: CustomersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
-  ) {}
+    private activatedRoute: ActivatedRoute,
+    private cdr: ChangeDetectorRef
+  ) { }
 
   // angular lifecircle hooks
   ngOnInit(): void {
@@ -166,6 +168,8 @@ export class ListSponsorsComponent
   }
 
   search(searchTerm: string) {
+    this.isLoading = true;
+    this.cdr.markForCheck();
     this.paginatorObject.search = searchTerm;
     this.searchInput = searchTerm;
     this.getListData(this.paginatorObject);
@@ -217,13 +221,20 @@ export class ListSponsorsComponent
         this.getListData(this.paginatorObject);
         this.searchGroup.reset();
       },
-      () => {}
+      () => { }
     );
   }
 
-  deleteSelected() {}
+  clear() {
+    this.searchSponsorInput.nativeElement.value = '';
+    this.searchInput = '';
+    this.paginatorObject.search = this.searchInput;
+    this.getListData(this.paginatorObject);
+  }
 
-  updateStatusForSelected() {}
+  deleteSelected() { }
 
-  fetchSelected() {}
+  updateStatusForSelected() { }
+
+  fetchSelected() { }
 }
