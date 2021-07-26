@@ -62,7 +62,9 @@ export class AddEditSponsorComponent
     this.formGroup = this.fb.group(fieldArray);
     let sponsorDetail = this.activatedRoute.snapshot.data.sponsorDetail;
     if (sponsorDetail) {
-      this.imageSource = `${environment.apiUrl}${sponsorDetail.image}`;
+      this.imageSource = sponsorDetail.image
+        ? `${environment.apiUrl}${sponsorDetail.image}`
+        : "assets/media/users/blank.png";
       this.formGroup.patchValue(sponsorDetail);
       this.formGroup.controls["country"].setValue(sponsorDetail.country?.id);
       this.formGroup.controls["website"].setValue(

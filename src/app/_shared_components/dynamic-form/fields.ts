@@ -37,7 +37,7 @@ const template_ref = {
   },
   image: {
     controlType: "fileUploader",
-    required: true,
+    // required: true,
   },
 };
 
