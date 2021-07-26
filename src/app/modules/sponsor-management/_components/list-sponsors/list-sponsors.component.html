@@ -34,8 +34,17 @@
           </div>
         </div>
         <div class="col-lg-2" [formGroup]="searchGroup">
-          <input type="text" class="form-control" name="searchText" placeholder="Search" value=""
-            formControlName="searchTerm" /><small class="form-text text-muted"><b>Search</b> in all fields</small>
+          <div class="relative-sponsor">
+            <input type="text" class="form-control" #searchSponsorInput name="searchText" placeholder="Search" value=""
+              formControlName="searchTerm" />
+
+            <div class="input-group-append close-sponsor"
+              [ngClass]="{ 'spinner spinner-sm spinner-primary loader-right': isLoading }">
+              <i (click)="clear()" class="quick-search-close ki ki-close icon-sm text-muted"
+                [style.display]="showCloseButton() ? 'block' : 'none'"></i>
+            </div>
+          </div>
+          <small class="form-text text-muted"><b>Search</b> in all fields</small>
         </div>
       </div>
     </div>
