@@ -1,16 +1,34 @@
-.cstm-card{
-    background: transparent;
-    .cstm-card-header, .cstm-card-body{
-        background: white;
+.cstm-card {
+  background: transparent;
+  .cstm-card-header,
+  .cstm-card-body {
+    background: #fff;
+  }
+  .cstm-card-header {
+    margin-bottom: 15px;
+  }
+  .list-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
+  .cstm-card-body {
+    table.table.table-head-custom thead {
+      background: #deefc9;
+      th {
+        color: #505050 !important;
+        padding: 20px 0.75rem;
+        font-size: 11px;
+        font-weight: 900;
+        .checkbox > span {
+          background-color: #fff;
+        }
+        .checkbox > input:checked ~ span {
+          background-color: #8bc540;
+        }
+      }
     }
-    .cstm-card-header{
-        margin-bottom: 15px;
-    }
-    .list-image{
-        width: 48px;
-        height: 48px;
-        object-fit: cover;
-    }
+  }
 }
 .relative-sponsor {
   position: relative;

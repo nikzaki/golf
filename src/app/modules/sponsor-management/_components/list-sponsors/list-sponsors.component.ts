@@ -1,4 +1,12 @@
-import { Component, OnInit, OnDestroy, AfterContentInit, ViewChild, ElementRef, ChangeDetectorRef } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  AfterContentInit,
+  ViewChild,
+  ElementRef,
+  ChangeDetectorRef,
+} from "@angular/core";
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
@@ -32,18 +40,17 @@ import { environment } from "src/environments/environment";
 })
 export class ListSponsorsComponent
   implements
-  OnInit,
-  OnDestroy,
-  AfterContentInit,
-  IDeleteAction,
-  IDeleteSelectedAction,
-  IFetchSelectedAction,
-  IUpdateStatusForSelectedAction,
-  ISortView,
-  IFilterView,
-  IGroupingView,
-  ISearchView,
-  IFilterView {
+    OnInit,
+    OnDestroy,
+    AfterContentInit,
+    IDeleteAction,
+    IDeleteSelectedAction,
+    IFetchSelectedAction,
+    IUpdateStatusForSelectedAction,
+    ISortView,
+    IFilterView,
+    IGroupingView,
+    IFilterView {
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
@@ -58,7 +65,8 @@ export class ListSponsorsComponent
   _items$ = new BehaviorSubject<[]>([]);
   pageSize = 10;
   public imageBaseURL = environment.apiUrl;
-  @ViewChild('searchSponsorInput', { static: true }) searchSponsorInput: ElementRef;
+  @ViewChild("searchSponsorInput", { static: true })
+  searchSponsorInput: ElementRef;
 
   constructor(
     private sponsorsService: SponsorsService,
@@ -68,7 +76,7 @@ export class ListSponsorsComponent
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   // angular lifecircle hooks
   ngOnInit(): void {
@@ -154,25 +162,6 @@ export class ListSponsorsComponent
     this.searchGroup = this.fb.group({
       searchTerm: [""],
     });
-    const searchEvent = this.searchGroup.controls.searchTerm.valueChanges
-      .pipe(
-        /*
-      The user can type quite quickly in the input box, and that could trigger a lot of server requests. With this operator,
-      we are limiting the amount of server requests emitted to a maximum of one every 150ms
-      */
-        debounceTime(250),
-        distinctUntilChanged()
-      )
-      .subscribe((val) => this.search(val));
-    this.subscriptions.push(searchEvent);
-  }
-
-  search(searchTerm: string) {
-    this.isLoading = true;
-    this.cdr.markForCheck();
-    this.paginatorObject.search = searchTerm;
-    this.searchInput = searchTerm;
-    this.getListData(this.paginatorObject);
   }
 
   // sorting
@@ -221,20 +210,30 @@ export class ListSponsorsComponent
         this.getListData(this.paginatorObject);
         this.searchGroup.reset();
       },
-      () => { }
+      () => {}
     );
   }
 
   clear() {
-    this.searchSponsorInput.nativeElement.value = '';
-    this.searchInput = '';
+    this.searchSponsorInput.nativeElement.value = "";
+    this.searchInput = "";
+    this.searchGroup.get("searchTerm").setValue("");
     this.paginatorObject.search = this.searchInput;
     this.getListData(this.paginatorObject);
   }
 
-  deleteSelected() { }
+  filterList() {
+    const searchVal = this.searchGroup.get("searchTerm").value;
+    this.isLoading = true;
+    this.cdr.markForCheck();
+    this.paginatorObject.search = searchVal;
+    this.searchInput = searchVal;
+    this.getListData(this.paginatorObject);
+  }
 
-  updateStatusForSelected() { }
+  deleteSelected() {}
 
-  fetchSelected() { }
+  updateStatusForSelected() {}
+
+  fetchSelected() {}
 }

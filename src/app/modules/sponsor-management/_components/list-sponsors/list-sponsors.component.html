@@ -20,6 +20,39 @@
     <!-- begin: Filtration form -->
     <div class="form form-label-right">
       <div class="form-group row">
+        <div class="col-lg-6" [formGroup]="searchGroup">
+          <div class="relative-sponsor">
+            <input
+              type="text"
+              class="form-control"
+              #searchSponsorInput
+              name="searchText"
+              placeholder="Search"
+              value=""
+              formControlName="searchTerm"
+            />
+            <div
+              class="input-group-append close-sponsor"
+              [ngClass]="{
+                'spinner spinner-sm spinner-primary loader-right': isLoading
+              }"
+            >
+              <i
+                (click)="clear()"
+                class="quick-search-close ki ki-close icon-sm text-muted"
+                [ngStyle]="{
+                  display:
+                    this.searchInput?.length && !this.isLoading
+                      ? 'block'
+                      : 'none'
+                }"
+              ></i>
+            </div>
+          </div>
+          <small class="form-text text-muted"
+            ><b>Search</b> in all fields</small
+          >
+        </div>
         <div class="col-lg-4">
           <div class="row" [formGroup]="filterGroup">
             <div class="col-lg-6">
@@ -51,17 +84,15 @@
             </div>
           </div>
         </div>
-        <div class="col-lg-2" [formGroup]="searchGroup">
-          <div class="relative-sponsor">
-            <input type="text" class="form-control" #searchSponsorInput name="searchText" placeholder="Search" value=""
-              formControlName="searchTerm" />
-            <div class="input-group-append close-sponsor"
-              [ngClass]="{ 'spinner spinner-sm spinner-primary loader-right': isLoading }">
-              <i (click)="clear()" class="quick-search-close ki ki-close icon-sm text-muted"
-                [ngStyle]="{'display': this.searchInput?.length && !this.isLoading ? 'block' : 'none' }"></i>
-            </div>
-          </div>
-          <small class="form-text text-muted"><b>Search</b> in all fields</small>
+        <div class="col-lg-2 text-right">
+          <button
+            type="button"
+            class="btn btn-primary"
+            type="submit"
+            (click)="filterList()"
+          >
+            Search
+          </button>
         </div>
       </div>
     </div>
@@ -118,8 +149,8 @@
             class="selection-cell-header"
             data-row-selection="true"
           >
-            <label class="checkbox checkbox-single"
-              ><input
+            <label class="checkbox checkbox-single">
+              <input
                 type="checkbox"
                 (click)="grouping.selectAllRows()"
                 [checked]="grouping.checkAreAllRowsSelected()" /><span></span
@@ -146,7 +177,7 @@
             </td>
             <td>
               <img
-              class="list-image"
+                class="list-image"
                 [src]="imageBaseURL + data.image"
                 onerror="this.src='/assets/media/users/blank.png';"
                 alt="Sponsor Image"
