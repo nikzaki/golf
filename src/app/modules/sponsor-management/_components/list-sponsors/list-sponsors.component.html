@@ -1,41 +1,67 @@
-<div class="card card-custom gutter-b">
-  <div class="card-header">
+<div class="card card-custom gutter-b cstm-card">
+  <div class="card-header cstm-card-header">
     <div class="card-title">
       <h3 class="card-label">Sponsors Management</h3>
     </div>
     <div class="card-toolbar">
-      <button type="button" class="btn btn-primary" routerLink="/sponsor-management/add">
-        <img src="../../../../../assets/media/svg/icons/General/SponsorNewRecord.svg" />
+      <button
+        type="button"
+        class="btn btn-primary"
+        routerLink="/sponsor-management/add"
+      >
+        <img
+          src="../../../../../assets/media/svg/icons/General/SponsorNewRecord.svg"
+        />
         New Record
       </button>
     </div>
   </div>
-  <div class="card-body">
+  <div class="card-body cstm-card-body">
     <!-- begin: Filtration form -->
     <div class="form form-label-right">
       <div class="form-group row">
         <div class="col-lg-4">
           <div class="row" [formGroup]="filterGroup">
             <div class="col-lg-6">
-              <select class="form-control" name="status" placeholder="Filter by Status" formControlName="status">
+              <select
+                class="form-control"
+                name="status"
+                placeholder="Filter by Status"
+                formControlName="status"
+              >
                 <option value="">All</option>
                 <option value="1">Susspended</option>
                 <option value="2">Active</option>
-                <option value="3">Pending</option>
-              </select><small class="form-text text-muted"><b>Filter</b> by Status</small>
+                <option value="3">Pending</option></select
+              ><small class="form-text text-muted"
+                ><b>Filter</b> by Status</small
+              >
             </div>
             <div class="col-lg-6">
-              <select class="form-control" placeholder="Filter by Type" name="type" formControlName="type">
+              <select
+                class="form-control"
+                placeholder="Filter by Type"
+                name="type"
+                formControlName="type"
+              >
                 <option value="">All</option>
                 <option value="1">Business</option>
-                <option value="2">Individual</option>
-              </select><small class="form-text text-muted"><b>Filter</b> by Type</small>
+                <option value="2">Individual</option></select
+              ><small class="form-text text-muted"><b>Filter</b> by Type</small>
             </div>
           </div>
         </div>
         <div class="col-lg-2" [formGroup]="searchGroup">
-          <input type="text" class="form-control" name="searchText" placeholder="Search" value=""
-            formControlName="searchTerm" /><small class="form-text text-muted"><b>Search</b> in all fields</small>
+          <input
+            type="text"
+            class="form-control"
+            name="searchText"
+            placeholder="Search"
+            value=""
+            formControlName="searchTerm"
+          /><small class="form-text text-muted"
+            ><b>Search</b> in all fields</small
+          >
         </div>
       </div>
     </div>
@@ -44,21 +70,25 @@
     <!-- begin: Grouping - checkbox -->
     <ng-container *ngIf="grouping.getSelectedRowsCount()">
       <div class="form">
-        <div class="
-            row
-            align-items-center
-            form-group-actions
-            margin-top-20 margin-bottom-20
-          ">
+        <div
+          class="row align-items-center form-group-actions margin-top-20 margin-bottom-20"
+        >
           <div class="col-xl-12">
             <div class="form-group form-group-inline">
               <div class="form-label form-label-no-wrap">
-                <label class="font-bold font-danger"><span>Selected records count:
-                    <b>{{ grouping.getSelectedRowsCount() }}</b></span></label>
+                <label class="font-bold font-danger"
+                  ><span
+                    >Selected records count:
+                    <b>{{ grouping.getSelectedRowsCount() }}</b></span
+                  ></label
+                >
               </div>
               <div>
-                <button type="button" class="btn btn-danger font-weight-bolder font-size-sm mr-1"
-                  (click)="deleteSelected()">
+                <button
+                  type="button"
+                  class="btn btn-danger font-weight-bolder font-size-sm mr-1"
+                  (click)="deleteSelected()"
+                >
                   <i class="fa fa-trash"></i> Delete All
                 </button>
               </div>
@@ -69,17 +99,33 @@
     </ng-container>
     <!-- end: Grouping -->
 
-    <app-paginator *ngIf="pageSize > 24" class="d-flex justify-content-between align-items-center flex-wrap"
-      [paginator]="paginator" [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+    <app-paginator
+      *ngIf="pageSize > 24"
+      class="d-flex justify-content-between align-items-center flex-wrap"
+      [paginator]="paginator"
+      [isLoading]="isLoading"
+      (paginate)="paginate($event)"
+    ></app-paginator>
 
     <!-- begin:Table -->
     <div class="table-responsive angular-bootstrap-table">
-      <table class="table table-head-custom table-vertical-center overflow-hidden">
+      <table
+        class="table table-head-custom table-vertical-center overflow-hidden"
+      >
         <thead>
-          <th width="5%" class="selection-cell-header" data-row-selection="true">
-            <label class="checkbox checkbox-single"><input type="checkbox" (click)="grouping.selectAllRows()"
-                [checked]="grouping.checkAreAllRowsSelected()" /><span></span></label>
+          <th
+            width="5%"
+            class="selection-cell-header"
+            data-row-selection="true"
+          >
+            <label class="checkbox checkbox-single"
+              ><input
+                type="checkbox"
+                (click)="grouping.selectAllRows()"
+                [checked]="grouping.checkAreAllRowsSelected()" /><span></span
+            ></label>
           </th>
+          <th></th>
           <th width="15%">Name of Sponsor</th>
           <th width="15%">Country</th>
           <th width="40%">Description</th>
@@ -89,28 +135,53 @@
         <tbody>
           <tr *ngFor="let data of _items$ | async">
             <td width="5%" class="selection-cell">
-              <label class="checkbox checkbox-single"><input type="checkbox" (click)="grouping.selectRow(data.id)"
-                  [checked]="grouping.isRowSelected(data.id)" />
+              <label class="checkbox checkbox-single"
+                ><input
+                  type="checkbox"
+                  (click)="grouping.selectRow(data.id)"
+                  [checked]="grouping.isRowSelected(data.id)"
+                />
                 <span></span>
               </label>
+            </td>
+            <td>
+              <img
+              class="list-image"
+                [src]="imageBaseURL + data.image"
+                onerror="this.src='/assets/media/users/blank.png';"
+                alt="Sponsor Image"
+              />
             </td>
             <td width="15%">{{ data.name }}</td>
             <td width="15%">{{ data.country?.name }}</td>
             <td width="40%">{{ data.description }}</td>
             <td width="15%">{{ data.createdBy }}</td>
             <td width="10%">
-              <a title="Edit customer" class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
-                [routerLink]="'edit/' + data.id">
-                <span [inlineSVG]="
+              <a
+                title="Edit customer"
+                class="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
+                [routerLink]="'edit/' + data.id"
+              >
+                <span
+                  [inlineSVG]="
                     './assets/media/svg/icons/Communication/Write.svg'
-                  " cacheSVG="true" class="svg-icon svg-icon-sm svg-icon-primary">
+                  "
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-sm svg-icon-primary"
+                >
                 </span>
               </a>
 
-              <a title="Delete customer" class="btn btn-icon btn-light btn-hover-danger btn-sm"
-                (click)="delete(data.id)">
-                <span [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'" cacheSVG="true"
-                  class="svg-icon svg-icon-md svg-icon-danger">
+              <a
+                title="Delete customer"
+                class="btn btn-icon btn-light btn-hover-danger btn-sm"
+                (click)="delete(data.id)"
+              >
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-md svg-icon-danger"
+                >
                 </span>
               </a>
             </td>
@@ -119,7 +190,11 @@
       </table>
     </div>
     <!-- end: Table -->
-    <app-paginator class="d-flex justify-content-between align-items-center flex-wrap" [paginator]="paginator"
-      [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+    <app-paginator
+      class="d-flex justify-content-between align-items-center flex-wrap"
+      [paginator]="paginator"
+      [isLoading]="isLoading"
+      (paginate)="paginate($event)"
+    ></app-paginator>
   </div>
 </div>

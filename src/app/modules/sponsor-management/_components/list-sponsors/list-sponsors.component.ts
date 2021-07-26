@@ -23,6 +23,8 @@ import { RestApiUrls } from "src/app/_models/rest-api-urls";
 import { DeleteModalComponent } from "src/app/_shared_components/delete-modal/delete-modal.component";
 import { CustomersService } from "../../_services/customers.service";
 import { SponsorsService } from "../../_services/sponsors.service";
+import { environment } from "src/environments/environment";
+
 @Component({
   selector: "app-list-sponsors",
   templateUrl: "./list-sponsors.component.html",
@@ -55,6 +57,7 @@ export class ListSponsorsComponent
 
   _items$ = new BehaviorSubject<[]>([]);
   pageSize = 10;
+  public imageBaseURL = environment.apiUrl;
 
   constructor(
     private sponsorsService: SponsorsService,

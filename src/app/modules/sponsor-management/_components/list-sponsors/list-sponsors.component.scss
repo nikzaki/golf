@@ -1,0 +1,14 @@
+.cstm-card{
+    background: transparent;
+    .cstm-card-header, .cstm-card-body{
+        background: white;
+    }
+    .cstm-card-header{
+        margin-bottom: 15px;
+    }
+    .list-image{
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+    }
+}
