@@ -1,16 +1,22 @@
-.cstm-card{
-    background: transparent;
-    .cstm-card-header, .cstm-card-body{
-        background: white;
-    }
-    .cstm-card-header{
-        margin-bottom: 15px;
-    }
-    .list-image{
-        width: 48px;
-        height: 48px;
-        object-fit: cover;
-    }
+.sponsor-table {
+  td {
+    word-break: break-all;
+  }
+}
+.cstm-card {
+  background: transparent;
+  .cstm-card-header,
+  .cstm-card-body {
+    background: white;
+  }
+  .cstm-card-header {
+    margin-bottom: 15px;
+  }
+  .list-image {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+  }
 }
 .relative-sponsor {
   position: relative;
@@ -23,4 +29,9 @@
 }
 .loader-right {
   right: 28px;
+}
+.res-padding {
+  @media screen and (max-width: 767.98px) {
+    padding: 0;
+  }
 }
