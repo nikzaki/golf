@@ -40,17 +40,18 @@ import { environment } from "src/environments/environment";
 })
 export class ListSponsorsComponent
   implements
-  OnInit,
-  OnDestroy,
-  AfterContentInit,
-  IDeleteAction,
-  IDeleteSelectedAction,
-  IFetchSelectedAction,
-  IUpdateStatusForSelectedAction,
-  ISortView,
-  IFilterView,
-  IGroupingView,
-  IFilterView {
+    OnInit,
+    OnDestroy,
+    AfterContentInit,
+    IDeleteAction,
+    IDeleteSelectedAction,
+    IFetchSelectedAction,
+    IUpdateStatusForSelectedAction,
+    ISortView,
+    IFilterView,
+    IGroupingView,
+    IFilterView
+{
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
@@ -76,7 +77,7 @@ export class ListSponsorsComponent
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private cdr: ChangeDetectorRef
-  ) { }
+  ) {}
 
   // angular lifecircle hooks
   ngOnInit(): void {
@@ -96,9 +97,12 @@ export class ListSponsorsComponent
     this.grouping = this.customerService.grouping;
     this.paginator = this.customerService.paginator;
 
-    this.searchGroup.get("searchTerm").valueChanges.subscribe(selectedValue => {
-      this.searchInput = selectedValue
-    })
+
+    this.searchGroup
+      .get("searchTerm")
+      .valueChanges.subscribe((selectedValue) => {
+        this.searchInput = selectedValue;
+      });
   }
 
   ngAfterContentInit() {
@@ -214,7 +218,7 @@ export class ListSponsorsComponent
         this.getListData(this.paginatorObject);
         this.searchGroup.reset();
       },
-      () => { }
+      () => {}
     );
   }
 
@@ -235,9 +239,10 @@ export class ListSponsorsComponent
     this.getListData(this.paginatorObject);
   }
 
-  deleteSelected() { }
 
-  updateStatusForSelected() { }
+  deleteSelected() {}
 
-  fetchSelected() { }
+  updateStatusForSelected() {}
+
+  fetchSelected() {}
 }
