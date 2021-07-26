@@ -9,7 +9,7 @@
         "lint": "ng lint",
         "e2e": "ng e2e",
         "rtl": "webpack --config webpack-rtl.config.js",
-        "postinstall": "ng build --prod",
+        "postinstall": "ng build",
         "compodoc": "npx compodoc -p tsconfig.doc.json --disableDependencies --minimal",
         "servedoc": "npx compodoc -p tsconfig.doc.json -s --port=4203 --disableDependencies --minimal"
     },
