@@ -1,59 +1,108 @@
 <div class="card card-custom gutter-b cstm-card">
-  <div class="card-header cstm-card-header">
-    <div class="card-title">
+  <div class="card-header cstm-card-header flex-row flex-nowrap">
+    <div class="card-title flex-column align-items-start justify-content-center">
       <h3 class="card-label">Sponsors Management</h3>
+      <p class="mb-0 text-muted mt-3 font-weight-bold font-size-sm">
+        Sponsors are generally used for Tournaments. The ones here will appear
+        for all clubs, however, clubs can create their own sponsors as well.
+      </p>
     </div>
     <div class="card-toolbar">
-      <button type="button" class="btn btn-primary btn-radius" routerLink="/sponsor-management/add">
-        <img src="../../../../../assets/media/svg/icons/General/SponsorNewRecord.svg" />
+      <button
+        type="button"
+        class="btn btn-primary btn-radius"
+        routerLink="/sponsor-management/add"
+      >
+        <img
+          src="../../../../../assets/media/svg/icons/General/SponsorNewRecord.svg"
+        />
         New Record
       </button>
     </div>
+  
   </div>
   <div class="card-body cstm-card-body">
     <!-- begin: Filtration form -->
     <div class="form form-label-right">
       <div class="form-group row">
         <div class="col-lg-6" [formGroup]="searchGroup">
+          <small class="form-text text-muted"
+            ><b>Search</b> in all fields</small
+          >
           <div class="relative-sponsor">
-            <input type="text" class="form-control" #searchSponsorInput name="searchText" placeholder="Search" value=""
-              formControlName="searchTerm" />
-            <div class="input-group-append close-sponsor" [ngClass]="{
+            <input
+              type="text"
+              class="form-control"
+              #searchSponsorInput
+              name="searchText"
+              placeholder="Search"
+              value=""
+              formControlName="searchTerm"
+            />
+            <div
+              class="input-group-append close-sponsor"
+              [ngClass]="{
                 'spinner spinner-sm spinner-primary loader-right': isLoading
-              }">
-              <i (click)="clear()" class="quick-search-close ki ki-close icon-sm text-muted" [ngStyle]="{
+              }"
+            >
+              <i
+                (click)="clear()"
+                class="quick-search-close ki ki-close icon-sm text-muted"
+                [ngStyle]="{
                   display:
                     this.searchInput?.length && !this.isLoading
                       ? 'block'
                       : 'none'
-                }"></i>
+                }"
+              ></i>
             </div>
           </div>
-          <small class="form-text text-muted"><b>Search</b> in all fields</small>
         </div>
         <div class="col-lg-4">
           <div class="row" [formGroup]="filterGroup">
             <div class="col-lg-6">
-              <select class="form-control" name="status" placeholder="Filter by Status" formControlName="status">
+              <small class="form-text text-muted"
+                ><b>Filter</b> by Status</small
+              >
+              <select
+                class="form-control"
+                name="status"
+                placeholder="Filter by Status"
+                formControlName="status"
+              >
                 <option value="">All</option>
                 <option value="1">Susspended</option>
                 <option value="2">Active</option>
                 <option value="3">Pending</option>
-              </select><small class="form-text text-muted"><b>Filter</b> by Status</small>
+              </select>
             </div>
             <div class="col-lg-6">
-              <select class="form-control" placeholder="Filter by Type" name="type" formControlName="type">
+              <small class="form-text text-muted"><b>Filter</b> by Type</small>
+              <select
+                class="form-control"
+                placeholder="Filter by Type"
+                name="type"
+                formControlName="type"
+              >
                 <option value="">All</option>
                 <option value="1">Business</option>
                 <option value="2">Individual</option>
-              </select><small class="form-text text-muted"><b>Filter</b> by Type</small>
+              </select>
             </div>
           </div>
         </div>
-        <div class="col-lg-2 text-right">
-          <button type="button" class="btn btn-primary btn-radius search-btn" type="submit" (click)="filterList()">
-            Search
-          </button>
+        <div class="col-lg-2 text-right align-self-center">
+          <button
+            type="button"
+            class="btn btn-primary btn-radius search-btn"
+            type="submit"
+            (click)="filterList()"
+          >
+          <span
+          [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+          cacheSVG="true"
+          class="svg-icon svg-icon-xl mr-0"
+        ></span>Search</button>
         </div>
       </div>
     </div>
@@ -62,16 +111,30 @@
     <!-- begin: Grouping - checkbox -->
     <ng-container *ngIf="grouping.getSelectedRowsCount()">
       <div class="form">
-        <div class="row align-items-center form-group-actions margin-top-20 margin-bottom-20">
+        <div
+          class="
+            row
+            align-items-center
+            form-group-actions
+            margin-top-20 margin-bottom-20
+          "
+        >
           <div class="col-xl-12">
             <div class="form-group form-group-inline">
               <div class="form-label form-label-no-wrap">
-                <label class="font-bold font-danger"><span>Selected records count:
-                    <b>{{ grouping.getSelectedRowsCount() }}</b></span></label>
+                <label class="font-bold font-danger"
+                  ><span
+                    >Selected records count:
+                    <b>{{ grouping.getSelectedRowsCount() }}</b></span
+                  ></label
+                >
               </div>
               <div>
-                <button type="button" class="btn btn-danger font-weight-bolder font-size-sm mr-1"
-                  (click)="deleteSelected()">
+                <button
+                  type="button"
+                  class="btn btn-danger font-weight-bolder font-size-sm mr-1"
+                  (click)="deleteSelected()"
+                >
                   <i class="fa fa-trash"></i> Delete All
                 </button>
               </div>
@@ -82,17 +145,35 @@
     </ng-container>
     <!-- end: Grouping -->
 
-    <app-paginator *ngIf="pageSize > 24" class="d-flex justify-content-between align-items-center flex-wrap"
-      [paginator]="paginator" [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+    <app-paginator
+      *ngIf="pageSize > 24"
+      class="d-flex justify-content-between align-items-center flex-wrap"
+      [paginator]="paginator"
+      [isLoading]="isLoading"
+      (paginate)="paginate($event)"
+    ></app-paginator>
 
     <!-- begin:Table -->
     <div class="table-responsive angular-bootstrap-table">
-      <table class="table table-head-custom table-vertical-center overflow-hidden sponsor-table">
+      <table
+        class="
+          table table-head-custom table-vertical-center
+          overflow-hidden
+          sponsor-table
+        "
+      >
         <thead>
-          <th width="5%" class="selection-cell-header" data-row-selection="true">
+          <th
+            width="5%"
+            class="selection-cell-header"
+            data-row-selection="true"
+          >
             <label class="checkbox checkbox-single">
-              <input type="checkbox" (click)="grouping.selectAllRows()"
-                [checked]="grouping.checkAreAllRowsSelected()" /><span></span></label>
+              <input
+                type="checkbox"
+                (click)="grouping.selectAllRows()"
+                [checked]="grouping.checkAreAllRowsSelected()" /><span></span
+            ></label>
           </th>
           <th></th>
           <th width="15%">Name of Sponsor</th>
@@ -104,32 +185,56 @@
         <tbody>
           <tr *ngFor="let data of _items$ | async">
             <td width="5%" class="selection-cell">
-              <label class="checkbox checkbox-single"><input type="checkbox" (click)="grouping.selectRow(data.id)"
-                  [checked]="grouping.isRowSelected(data.id)" />
+              <label class="checkbox checkbox-single"
+                ><input
+                  type="checkbox"
+                  (click)="grouping.selectRow(data.id)"
+                  [checked]="grouping.isRowSelected(data.id)"
+                />
                 <span></span>
               </label>
             </td>
             <td>
-              <img class="list-image" [src]="imageBaseURL + data.image"
-                onerror="this.src='/assets/media/users/blank.png';" alt="Sponsor Image" />
+              <img
+                class="list-image"
+                [src]="imageBaseURL + data.image"
+                onerror="this.src='/assets/media/users/blank.png';"
+                alt="Sponsor Image"
+              />
             </td>
             <td width="15%">{{ data.name }}</td>
             <td width="10%">{{ data.country?.name }}</td>
             <td width="35%">{{ data.description }}</td>
             <td width="20%">{{ data.createdBy }}</td>
             <td class="res-padding" width="15%">
-              <a title="Edit customer" class="btn btn-icon btn-light btn-hover-primary btn-sm mr-2 mr-sm-3"
-                [routerLink]="'edit/' + data.id">
-                <span [inlineSVG]="
+              <a
+                title="Edit customer"
+                class="
+                  btn btn-icon btn-light btn-hover-primary btn-sm
+                  mr-2 mr-sm-3
+                "
+                [routerLink]="'edit/' + data.id"
+              >
+                <span
+                  [inlineSVG]="
                     './assets/media/svg/icons/Communication/Write.svg'
-                  " cacheSVG="true" class="svg-icon svg-icon-sm svg-icon-primary">
+                  "
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-sm svg-icon-primary"
+                >
                 </span>
               </a>
 
-              <a title="Delete customer" class="btn btn-icon btn-light btn-hover-danger btn-sm"
-                (click)="delete(data.id)">
-                <span [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'" cacheSVG="true"
-                  class="svg-icon svg-icon-md svg-icon-danger">
+              <a
+                title="Delete customer"
+                class="btn btn-icon btn-light btn-hover-danger btn-sm"
+                (click)="delete(data.id)"
+              >
+                <span
+                  [inlineSVG]="'./assets/media/svg/icons/General/Trash.svg'"
+                  cacheSVG="true"
+                  class="svg-icon svg-icon-md svg-icon-danger"
+                >
                 </span>
               </a>
             </td>
@@ -138,7 +243,11 @@
       </table>
     </div>
     <!-- end: Table -->
-    <app-paginator class="d-flex justify-content-between align-items-center flex-wrap" [paginator]="paginator"
-      [isLoading]="isLoading" (paginate)="paginate($event)"></app-paginator>
+    <app-paginator
+      class="d-flex justify-content-between align-items-center flex-wrap"
+      [paginator]="paginator"
+      [isLoading]="isLoading"
+      (paginate)="paginate($event)"
+    ></app-paginator>
   </div>
 </div>
