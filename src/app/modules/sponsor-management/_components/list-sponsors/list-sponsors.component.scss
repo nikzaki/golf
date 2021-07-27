@@ -47,6 +47,11 @@
 .loader-right {
   right: 28px;
 }
+.btn-primary.search-btn:focus{
+  color: #FFFFFF;
+  background-color: #8BC540 ;
+  border-color: #8BC540;
+}
 .res-padding {
   @media screen and (max-width: 767.98px) {
     padding: 0;
