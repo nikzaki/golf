@@ -47,7 +47,7 @@ export class AddEditSponsorComponent
       if (params.id) {
         this.id = params.id;
         this.isEdit = true;
-        this.title = "Edit Record";
+        this.title = "Edit Sponsors";
       }
     });
     this.subscriptions.push(sb);

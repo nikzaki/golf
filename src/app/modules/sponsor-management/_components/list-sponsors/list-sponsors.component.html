@@ -1,7 +1,11 @@
 <div class="card card-custom gutter-b cstm-card">
-  <div class="card-header cstm-card-header">
-    <div class="card-title">
+  <div class="card-header cstm-card-header flex-row flex-nowrap">
+    <div class="card-title flex-column align-items-start justify-content-center">
       <h3 class="card-label">Sponsors Management</h3>
+      <p class="mb-0 text-muted mt-3 font-weight-bold font-size-sm">
+        Sponsors are generally used for Tournaments. The ones here will appear
+        for all clubs, however, clubs can create their own sponsors as well.
+      </p>
     </div>
     <div class="card-toolbar">
       <button
@@ -15,12 +19,16 @@
         New Record
       </button>
     </div>
+  
   </div>
   <div class="card-body cstm-card-body">
     <!-- begin: Filtration form -->
     <div class="form form-label-right">
       <div class="form-group row">
         <div class="col-lg-6" [formGroup]="searchGroup">
+          <small class="form-text text-muted"
+            ><b>Search</b> in all fields</small
+          >
           <div class="relative-sponsor">
             <input
               type="text"
@@ -50,9 +58,6 @@
               ></i>
             </div>
           </div>
-          <small class="form-text text-muted"
-            ><b>Search</b> in all fields</small
-          >
         </div>
         <div class="col-lg-6 text-right">
           <button
@@ -61,8 +66,11 @@
             type="submit"
             (click)="filterList()"
           >
-            Search
-          </button>
+          <span
+          [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
+          cacheSVG="true"
+          class="svg-icon svg-icon-xl mr-0"
+        ></span>Search</button>
         </div>
       </div>
     </div>
