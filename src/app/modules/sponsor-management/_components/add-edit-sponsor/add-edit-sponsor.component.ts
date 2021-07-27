@@ -23,7 +23,7 @@ export class AddEditSponsorComponent
   public formGroup: FormGroup;
   public form = formService.segment["sponsorForm"].fields;
   private subscriptions: Subscription[] = [];
-  public title: string = "New Record";
+  public title: string = "New Sponsor";
   isEdit: boolean = false;
   isDisabled: boolean = false;
   countryList: any = [];
@@ -47,7 +47,7 @@ export class AddEditSponsorComponent
       if (params.id) {
         this.id = params.id;
         this.isEdit = true;
-        this.title = "Edit Sponsors";
+        this.title = "Edit Sponsor";
       }
     });
     this.subscriptions.push(sb);
