@@ -48,10 +48,7 @@ export class ListSponsorsComponent
     IFetchSelectedAction,
     IUpdateStatusForSelectedAction,
     ISortView,
-    IFilterView,
-    IGroupingView,
-    IFilterView
-{
+    IGroupingView {
   paginator: PaginatorState;
   sorting: SortState;
   grouping: GroupingState;
@@ -81,8 +78,6 @@ export class ListSponsorsComponent
 
   // angular lifecircle hooks
   ngOnInit(): void {
-    // Filter Form
-    this.filterForm();
     // Search Form
     this.searchForm();
     // Initial paginator Object
@@ -96,7 +91,6 @@ export class ListSponsorsComponent
     this.getListData(this.paginatorObject);
     this.grouping = this.customerService.grouping;
     this.paginator = this.customerService.paginator;
-
 
     this.searchGroup
       .get("searchTerm")
@@ -132,37 +126,6 @@ export class ListSponsorsComponent
     this.grouping.itemIds = res.items.map((ele) => {
       return ele.id;
     });
-  }
-
-  // filtration
-  filterForm() {
-    this.filterGroup = this.fb.group({
-      status: [""],
-      type: [""],
-      searchTerm: [""],
-    });
-    this.subscriptions.push(
-      this.filterGroup.controls.status.valueChanges.subscribe(() =>
-        this.filter()
-      )
-    );
-    this.subscriptions.push(
-      this.filterGroup.controls.type.valueChanges.subscribe(() => this.filter())
-    );
-  }
-
-  filter() {
-    const filter = {};
-    const status = this.filterGroup.get("status").value;
-    if (status) {
-      filter["status"] = status;
-    }
-
-    const type = this.filterGroup.get("type").value;
-    if (type) {
-      filter["type"] = type;
-    }
-    this.customerService.patchState({ filter });
   }
 
   // search Record
@@ -238,7 +201,6 @@ export class ListSponsorsComponent
     this.searchInput = searchVal;
     this.getListData(this.paginatorObject);
   }
-
 
   deleteSelected() {}
 

@@ -47,10 +47,14 @@
 .loader-right {
   right: 28px;
 }
-.btn-primary.search-btn:focus{
-  color: #FFFFFF;
-  background-color: #8BC540 ;
-  border-color: #8BC540;
+.btn-primary.search-btn:focus {
+  color: #ffffff;
+  background-color: #8bc540;
+  border-color: #8bc540;
+}
+.label.label-light-success {
+  background-color: #409143;
+  color: #fff;
 }
 .res-padding {
   @media screen and (max-width: 767.98px) {
