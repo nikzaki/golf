@@ -1,6 +1,6 @@
 .sponsor-table {
   td {
-    word-break: break-all;
+    word-break: break-word;
   }
 }
 .cstm-card {
@@ -57,3 +57,19 @@
   color: #fff;
 }
 
+.label {
+  white-space: nowrap;
+}
+
+.btn {
+  white-space: nowrap;
+}
+
+.search-btn {
+  padding: 0.5rem;
+}
+
+.form-group-search-btn {
+  display: flex;
+  align-items: flex-end;
+}

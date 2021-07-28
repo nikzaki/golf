@@ -24,7 +24,10 @@
   <div class="card-body cstm-card-body">
     <!-- begin: Filtration form -->
     <div class="form form-label-right">
-      <div class="form-group row">
+      <div class="form-group row form-group-search-btn" 
+      >
+      <!-- style="display: flex;
+      align-items: flex-end;" -->
         <div class="col-lg-6" [formGroup]="searchGroup">
           <small class="form-text text-muted"
             ><b>Search</b> in all fields</small
@@ -60,12 +63,14 @@
           </div>
         </div>
         <div class="col-lg-6 text-right">
-          <button
+          <!-- style="padding:0.5rem" -->
+          <button 
             type="button"
             class="btn btn-primary btn-radius search-btn"
             type="submit"
             (click)="filterList()"
           >
+          <!-- btn-radius -->
           <span
           [inlineSVG]="'./assets/media/svg/icons/General/Search.svg'"
           cacheSVG="true"
