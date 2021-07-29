@@ -19,7 +19,8 @@ export const locale = {
       TOURNAMENTS: 'Tournaments',
       FINANCE: 'Finance',
       HANDICAP: 'Handicap',
-      ADMIN: 'Admin'
+      ADMIN: 'Admin',
+      MEMBERSHIPS: 'Memberships'
     },
     AUTH: {
       GENERAL: {

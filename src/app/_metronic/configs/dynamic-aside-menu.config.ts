@@ -21,21 +21,15 @@ export const DynamicAsideMenuConfig = {
     submenu: [{
         title: 'Settings',
         bullet: 'dot',
-        page: '/bookings/settings',
-        // submenu: [
-        //   {
-        //     title: 'Auto Complete',
-        //     page: '/material/form-controls/autocomplete',
-        //     permission: 'accessToECommerceModule'
-        //   },]
+        page: '/bookings/booking-settings',
         },{
-          title: 'Pricing & Promotions',
+          title: 'Pricing Plans & Promotions',
           bullet: 'dot',
-          page: '/bookings/pricing',
+          page: '/bookings/pricing-plan',
         },{
           title: 'Tee Time Generation',
           bullet: 'dot',
-          page: '/bookings/teeTimeGeneration',
+          page: '/bookings/tee-time-generation',
         }
       ]
     },{ title: 'Maintenance / Operations',
@@ -47,15 +41,15 @@ export const DynamicAsideMenuConfig = {
     submenu: [{
         title: 'Live Tee Times',
         bullet: 'dot',
-        page: '/bookings/teeTimeLive',
+        page: '/bookings/tee-time-live',
         },{
-          title: 'Update Wizard',
+          title: 'Tee Time Update Wizard',
           bullet: 'dot',
-          page: '/bookings/updateWizard',
+          page: '/bookings/tee-time-wizard',
         },{
           title: 'Booked / Paid Flights',
           bullet: 'dot',
-          page: '/bookings/teeTimeFlights',
+          page: '/bookings/tee-time-flights',
         }
       ]
     },{ title: 'Offer & Deals',
@@ -65,17 +59,18 @@ export const DynamicAsideMenuConfig = {
     icon: 'flaticon2-browser-2',
     svg: './assets/media/svg/icons/Design/Cap-2.svg',
     submenu: [{
-        title: 'Discounts',
+        title: 'Discount Company',
         bullet: 'dot',
-        page: '/bookings/teeTimeDiscounts',
+        // page: '/bookings/teeTimeDiscounts',
+        page: '/bookings/discount-company',
         },{
-          title: 'Vouchers',
+          title: 'Discount Memberships',
           bullet: 'dot',
-          page: '/bookings/teeTimeVouchers',
+          page: '/bookings/discount-memberships',
         },{
-          title: 'PrivilegeCards',
+          title: 'Club Discounts',
           bullet: 'dot',
-          page: '/bookings/teeTimePrivilegeCards',
+          page: '/bookings/club-discounts',
         }
       ]
     },

@@ -105,13 +105,13 @@ export const DynamicHeaderMenuConfig = {
       //   }]
       // }]
     },
-    // {
-    //   title: 'Memberships',
-    //   root: true,
-    //   alignment: 'left',
-    //   page: '/dashboard',
-    //   translate: 'MENU.MEMBERSHIPS',
-    // },
+    {
+      title: 'Memberships',
+      root: true,
+      alignment: 'left',
+      page: '/dashboard',
+      translate: 'MENU.MEMBERSHIPS',
+    },
     {
       title: 'Tournaments',
       root: true,
